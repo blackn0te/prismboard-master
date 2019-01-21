@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Constants\CacheKeys.cs" />
+    <Compile Include="Data\Mapping\StudentMapping.cs" />
     <Compile Include="Data\Mapping\SectionMapping.cs" />
     <Compile Include="ExtensionMethods\ImageExtensions.cs" />
     <Compile Include="ExtensionMethods\MembershipUserExtensions.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Models\Entities\BadgeTypeTimeLastChecked.cs" />
     <Compile Include="Models\Activity\Activity.cs" />
     <Compile Include="Models\Entities\Block.cs" />
+    <Compile Include="Models\Entities\Student.cs" />
     <Compile Include="Models\Entities\ExtendedDataEntity.cs" />
     <Compile Include="Models\Entities\PostEdit.cs" />
     <Compile Include="Models\Entities\Section.cs" />
