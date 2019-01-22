@@ -22,14 +22,40 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarIcon">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="@Url.Action("Index","Home")">Home</a>
-                <a class="nav-item nav-link" href="@Url.Action("Index","Home")">Calendar</a>
-                <a class="nav-item nav-link" href="@Url.Action("Index","Home")">Modules</a>
-                <a class="nav-item nav-link" href="@Url.Action("Index","Home")">Forum</a>
-                <a class="nav-item nav-link" href="@Url.Action("Index","Home")">Settings</a>
-                <a class="nav-item nav-link" href="@Url.Action("Index","AdminDashBoard")">AdminBoard</a>
-            </div>
+            <ul class="navbar-nav mr-auto">
+                <li class="navbar-left">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">Home</a>
+                </li>
+                <li class="navbar-left">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">Calendar</a>
+                </li>
+                <li class="navbar-left">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">Modules</a>
+                </li>
+                <li class="navbar-left">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">Forum</a>
+                </li>
+                <li class="navbar-left">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">Settings</a>
+                </li>
+                <li class="navbar-left">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">Calendar</a>
+                </li>
+                <li class="navbar-left">
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="navbar-right dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropDown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Action</a>
+                    </div>
+                </li>
+            </ul>
         </div>
     </nav>
 
