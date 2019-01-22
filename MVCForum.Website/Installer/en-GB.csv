@@ -42,7 +42,7 @@ Buttons.ChangePassword,Change Password
 Buttons.Continue,Continue
 Buttons.CreatePost,Add Post
 Buttons.Edit,Edit
-Buttons.LogOn,Log On
+Buttons.LogOn,Login
 Buttons.Report,Report
 Buttons.ResetPassword,Reset Password
 Buttons.Save,Save
@@ -97,7 +97,7 @@ Leaderboard.LeaderboardTitle,Global Leaderboard
 Leaderboard.ThisWeeksStars,This Weeks Stars
 Leaderboard.ThisYearsStars,This Years Rock Stars
 LogOn.LogOff,Log Off
-LogOn.LogOn,Log On
+LogOn.LogOn,Login
 Member.HasNewPrivateMessages,You have new unread Private messages
 Member.ProfileUpdated,Profile Updated
 Members.Admin,Admin

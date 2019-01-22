@@ -219,10 +219,6 @@
     <Compile Include="ViewModels\Vote\ShowVotesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Syahiran.mdf" />
-    <Content Include="App_Data\Syahiran_log.ldf">
-      <DependentUpon>Syahiran.mdf</DependentUpon>
-    </Content>
     <Content Include="Config\imageprocessor\cache.config" />
     <Content Include="Config\imageprocessor\processing.config" />
     <Content Include="Areas\Admin\Views\AdminCategory\Sections.cshtml" />
@@ -231,6 +227,7 @@
     <Content Include="Areas\Admin\Views\AdminCategory\AddEditSection.cshtml" />
     <None Include="Config\imageprocessor\security.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <Content Include="Content\admin\Admin.css">
       <DependentUpon>Admin.scss</DependentUpon>
@@ -1182,6 +1179,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Views\Category\ListSections.cshtml" />
+    <None Include="Properties\PublishProfiles\prismboard - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\StorageProviders\" />
