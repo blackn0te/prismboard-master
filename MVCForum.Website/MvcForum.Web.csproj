@@ -87,6 +87,7 @@
     <Compile Include="Areas\Admin\Controllers\BatchController.cs" />
     <Compile Include="Areas\Admin\Controllers\BannedWordController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ModuleManageController.cs" />
     <Compile Include="Controllers\ModerateController.cs" />
     <Compile Include="ExtensionMethods\CategoryViewModelExtensions.cs" />
     <Compile Include="ViewModels\Admin\AdminBadgeViewModels.cs" />
@@ -225,6 +226,10 @@
     <Content Include="Areas\Admin\Views\AdminCategory\_SectionNavButtons.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCategory\GetSections.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCategory\AddEditSection.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleManage\DeleteModule.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleManage\DetailModule.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleManage\Module.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleManage\NewModule.cshtml" />
     <None Include="Config\imageprocessor\security.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>

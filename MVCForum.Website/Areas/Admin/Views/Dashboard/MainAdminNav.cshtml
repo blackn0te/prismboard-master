@@ -168,5 +168,11 @@
         <li>
             <a href="@Url.Action("Index", "Log", new { area = "Admin" })" class="@(currentController == "log" && currentAction == "index" ? "active" : "")"><i class="fa fa-fw fa-file-text-o"></i> Log</a>
         </li>
+        <li>
+            <a href="@Url.Action("Module", "ModuleManage", new { area = "Admin"})" class="@(currentController == "modulemanage" && currentAction == "module" ? "active" : "")">
+                <i class="fa fa-fw fa-book"></i>
+                Module Management
+            </a>
+        </li>
     </ul>
 </div>
