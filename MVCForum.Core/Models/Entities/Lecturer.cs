@@ -11,8 +11,8 @@ namespace MvcForum.Core.Models.Entities
     public partial class Lecturer
     {
 
-//        [Key]
-//        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
 
         public int LecturerId { get; set; }
         public string LectName { get; set; }
