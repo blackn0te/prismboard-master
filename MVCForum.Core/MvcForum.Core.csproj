@@ -39,20 +39,12 @@
   <ItemGroup>
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Constants\CacheKeys.cs" />
-    <Compile Include="Data\Mapping\Lecturer.cs" />
-    <Compile Include="Data\Mapping\Materials.cs" />
-    <Compile Include="Data\Mapping\ModDetail.cs" />
-    <Compile Include="Data\Mapping\Module.cs" />
     <Compile Include="Data\Mapping\LecturerMapping.cs" />
     <Compile Include="Data\Mapping\MaterialsMapping.cs" />
     <Compile Include="Data\Mapping\ModDetailMapping.cs" />
     <Compile Include="Data\Mapping\ModuleMapping.cs" />
     <Compile Include="Data\Mapping\StudentMapping.cs" />
     <Compile Include="Data\Mapping\SectionMapping.cs" />
-    <Compile Include="Data\Mapping\SubmittableFile.cs" />
-    <Compile Include="Data\Mapping\SubmittedContent.cs" />
-    <Compile Include="Data\Mapping\SubmittedTest.cs" />
-    <Compile Include="Data\Mapping\TestDetails.cs" />
     <Compile Include="Data\Mapping\SubmittableFileMapping.cs" />
     <Compile Include="Data\Mapping\SubmittedContentMapping.cs" />
     <Compile Include="Data\Mapping\SubmittedTestMapping.cs" />
@@ -239,9 +231,6 @@
     <Compile Include="Migrations\201712271549027_InitialCommit.Designer.cs">
       <DependentUpon>201712271549027_InitialCommit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Modules\SY_ModuleModel.cs" />
-    <Compile Include="Models\Modules\SY_ModuleViewModel.cs" />
-    <Compile Include="Models\Modules\SY_ShowModules.cs" />
     <Compile Include="Models\OAuth\FacebookOAuthData.cs" />
     <Compile Include="Models\OAuth\GoogleOAuthData.cs" />
     <Compile Include="Models\PostType.cs" />
