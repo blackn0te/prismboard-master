@@ -4,14 +4,9 @@
     using Interfaces;
     using Utilities;
 
-    public partial class Student : IBaseEntity
+    public partial class Student
     {
-        public Student()
-        {
-            Id = GuidComb.GenerateComb();
-        }
 
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string AdminNo { get; set; }

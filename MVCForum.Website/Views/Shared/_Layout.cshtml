@@ -77,6 +77,10 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ">
+
+
+                    <!--if user is not authernticated, just show Login button-->
+
                     @if (!User.Identity.IsAuthenticated)
                     {
                         if (Html.Settings().SuspendRegistration != true)
@@ -90,7 +94,7 @@
                         </li>
                     }
 
-                    <!--If user is authenticated, show admin link-->
+                    <!--If user is authenticated, show drop down panel-->
                     @if (User.Identity.IsAuthenticated)
                     {
                         @Html.Action("SideAdminPanel", "Members", new { isDropDown = true })

@@ -8,7 +8,6 @@
     public StudentMapping()
         {
             HasKey(x => x.AdminNo);
-            Property(x => x.Id).IsRequired();
             Property(x => x.Name).IsRequired();
             Property(x => x.Email).IsRequired();
             Property(x => x.AdminNo).IsRequired();
