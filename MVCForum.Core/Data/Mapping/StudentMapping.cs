@@ -11,6 +11,8 @@
             Property(x => x.Name).IsRequired();
             Property(x => x.Email).IsRequired();
             Property(x => x.AdminNo).IsRequired();
+            Property(x => x.PemGroup).IsRequired();
+            Property(x => x.Pem).IsRequired();
             Property(x => x.StudentCourse).IsRequired();
             Property(x => x.StudentModule).IsRequired();
             Property(x => x.StudentSchool).IsRequired();

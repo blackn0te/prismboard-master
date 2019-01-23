@@ -109,6 +109,7 @@
     <Compile Include="Models\Entities\BadgeTypeTimeLastChecked.cs" />
     <Compile Include="Models\Activity\Activity.cs" />
     <Compile Include="Models\Entities\Block.cs" />
+    <Compile Include="Models\Entities\Event.cs" />
     <Compile Include="Models\Entities\Lecturer.cs" />
     <Compile Include="Models\Entities\Materials.cs" />
     <Compile Include="Models\Entities\ModDetail.cs" />
