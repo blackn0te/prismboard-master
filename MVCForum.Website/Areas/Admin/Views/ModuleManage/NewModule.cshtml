@@ -227,7 +227,7 @@
 
             if (ModuleObj.ModID != null && ModuleObj.ModStart != null && ModuleObj.ModuleName != null && ModuleObj.lectList != null && ModuleObj.studList != null && ModuleObj.ModStart != null && ModuleObj.ModEnd != null) {
                 $.ajax({
-                    url: "/AdminDashBoard/Module/NewModule",
+                    url: "AdminDashBoard/NewModule",
                     method: "POST",
                     data: {
                         __RequestVerificationToken: token,

@@ -231,6 +231,9 @@
     <Compile Include="Migrations\201712271549027_InitialCommit.Designer.cs">
       <DependentUpon>201712271549027_InitialCommit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Module\SY_ModuleModel.cs" />
+    <Compile Include="Models\Module\SY_ModuleViewModel.cs" />
+    <Compile Include="Models\Module\SY_ShowModules.cs" />
     <Compile Include="Models\OAuth\FacebookOAuthData.cs" />
     <Compile Include="Models\OAuth\GoogleOAuthData.cs" />
     <Compile Include="Models\PostType.cs" />
