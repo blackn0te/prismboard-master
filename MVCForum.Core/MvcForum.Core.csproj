@@ -39,8 +39,16 @@
   <ItemGroup>
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Constants\CacheKeys.cs" />
+    <Compile Include="Data\Mapping\Lecturer.cs" />
+    <Compile Include="Data\Mapping\Materials.cs" />
+    <Compile Include="Data\Mapping\ModDetail.cs" />
+    <Compile Include="Data\Mapping\Module.cs" />
     <Compile Include="Data\Mapping\StudentMapping.cs" />
     <Compile Include="Data\Mapping\SectionMapping.cs" />
+    <Compile Include="Data\Mapping\SubmittableFile.cs" />
+    <Compile Include="Data\Mapping\SubmittedContent.cs" />
+    <Compile Include="Data\Mapping\SubmittedTest.cs" />
+    <Compile Include="Data\Mapping\TestDetails.cs" />
     <Compile Include="ExtensionMethods\ImageExtensions.cs" />
     <Compile Include="ExtensionMethods\MembershipUserExtensions.cs" />
     <Compile Include="ExtensionMethods\PipelineExtensions.cs" />
@@ -101,10 +109,18 @@
     <Compile Include="Models\Entities\BadgeTypeTimeLastChecked.cs" />
     <Compile Include="Models\Activity\Activity.cs" />
     <Compile Include="Models\Entities\Block.cs" />
+    <Compile Include="Models\Entities\Lecturer.cs" />
+    <Compile Include="Models\Entities\Materials.cs" />
+    <Compile Include="Models\Entities\ModDetail.cs" />
+    <Compile Include="Models\Entities\Module.cs" />
     <Compile Include="Models\Entities\Student.cs" />
     <Compile Include="Models\Entities\ExtendedDataEntity.cs" />
     <Compile Include="Models\Entities\PostEdit.cs" />
     <Compile Include="Models\Entities\Section.cs" />
+    <Compile Include="Models\Entities\SubmittableFile.cs" />
+    <Compile Include="Models\Entities\SubmittedContent.cs" />
+    <Compile Include="Models\Entities\SubmittedTest.cs" />
+    <Compile Include="Models\Entities\TestDetails.cs" />
     <Compile Include="Models\Enums\ActivityType.cs" />
     <Compile Include="Models\Enums\BadgeType.cs" />
     <Compile Include="Models\Enums\CacheTimes.cs" />
