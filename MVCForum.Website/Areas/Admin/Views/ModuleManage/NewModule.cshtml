@@ -1,0 +1,252 @@
+﻿@using PrismBoardProject.Models
+@model dynamic
+
+@{
+    ViewBag.Title = "Create Module";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Creation Of Module</h1>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label for="ModId">Module Id</label>
+            <input required id="ModId" class="form-control" name="ModId" />
+        </div>
+        <div class="form-group">
+            <label for="ModTittle">Module Name</label>
+            <input required id="ModTittle" class="form-control" name="ModTittle" />
+        </div>
+        <div class="form-group">
+            <label for="ModLectList">Lecturers</label>
+            <ul id="formLect" class="list-group"></ul>
+            <br />
+            <button type="button" data-toggle="modal" data-target="#lectureList" class="btn btn-primary float-right">Add New Lecturer</button>
+            <div class="modal fade" id="lectureList" tabindex="-1" role="dialog" aria-labelledby="lectureListLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="lectureListLabel">Lecture List</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="display: none;" class="alert alert-danger" role="alert">
+                                <strong>Something when wrong! You already added that Lecturer</strong>
+                            </div>
+                            <table id="lectTab" class="table table-dark table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (Lecturer person in Model.Lecture)
+                                    {
+                                        <tr>
+                                            <th scope="row">
+                                                @person.LecturerID
+                                            </th>
+                                            <td>
+                                                @person.LectName
+                                            </td>
+                                            <td>
+                                                @person.LectEmail
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="addLectBtn" type="button" class="btn btn-primary">Select Lecturer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label for="ModStudList">Students</label>
+            <ul id="formStud" class="list-group"></ul>
+            <br />
+            <button type="button" data-toggle="modal" data-target="#studList" class="btn btn-primary float-right">Add New Student</button>
+            <div class="modal fade" id="studList" tabindex="-1" role="dialog" aria-labelledby="studentListLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="studentListLabel">Student List</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="display: none;" class="alert alert-danger" role="alert">
+                                <strong>Something went wrong! You already added that Student</strong>
+                            </div>
+                            <table id="studTab" class="table table-dark table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">AdminNo</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (Student person in Model.Student)
+                                    {
+                                        <tr>
+                                            <th scope="row">
+                                                @person.StudAdminNo
+                                            </th>
+                                            <td>
+                                                @person.StudName
+                                            </td>
+                                            <td>
+                                                @person.StudEmail
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="addStudBtn" type="button" class="btn btn-primary">Select Student</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label for="modStart">Start Date</label>
+            <input required id="modStart" type="date" name="modStart" class="form-control" />
+            <br />
+            <label for="modEnd">End Date</label>
+            <input required id="modEnd" type="date" name="modEnd" class="form-control" />
+        </div>
+
+    }
+    <button id="submitGay" class="btn btn-success float-right">Create</button>
+</div>
+<br />
+<br />
+<br />
+<br />
+<script>
+    //Lecture Side
+    var lectId;
+    $('#lectTab tbody tr').click(function () {
+        $(this).addClass('bg-success').siblings().removeClass('bg-success');
+        var row = $(this).find('td:first').text();
+        lectId = row;
+        console.log(row);
+    });
+    $(function (){
+        $('#addLectBtn').click(function () {
+            var currentList = [];
+            $("#formLect li").each(function (i, li) {
+                currentList.push($(li).text());
+            });
+
+            if (currentList.includes(lectId)) {
+                $(".alert").css("display", "block");
+            } else {
+                $("#lectureList").modal("hide");
+                $("#formLect").append("<li onclick=\"parentNode.removeChild(this)\" class=\"list-group-item list-group-item-action\">" + lectId + "</li>");
+            }
+        });
+    });
+    
+
+    //Student Side
+    var studId;
+    $('#studTab tbody tr').click(function () {
+        $(this).addClass('bg-success').siblings().removeClass('bg-success');
+        var row = $(this).find('td:first').text();
+        studId = row;
+        console.log(row);
+    });
+    $(function () {
+        $('#addStudBtn').click(function () {
+            var currentList = [];
+            $("#formStud li").each(function (i, li) {
+                currentList.push($(li).text());
+            });
+
+            if (currentList.includes(studId)) {
+                $(".alert").css("display", "block");
+            } else {
+                $("#studList").modal("hide");
+                $("#formStud").append("<li onclick=\"parentNode.removeChild(this)\" class=\"list-group-item list-group-item-action\">" + studId + "</li>");
+            }
+        });
+    });
+
+    //Form Submission
+    $(document).ready(function () {
+        $("#submitGay").click(function (e) {
+            //e.preventDefault();
+
+            var token = $('input[name=__RequestVerificationToken]').val();
+            console.log(token);
+            var ModuleObj = {};
+            ModuleObj.ModID = $("#ModId").val();
+            ModuleObj.ModuleName = $("#ModTittle").val();
+            ModuleObj.ModStart = $("#modStart").val();
+            ModuleObj.ModEnd = $("#modEnd").val();
+             
+
+            //Get all Lecturer Name
+            var lectList = [];
+            var ul = document.getElementById("formLect");
+            var items = ul.getElementsByTagName("li");
+            for (var i = 0; i < items.length; i++) {
+                lectList.push(items[i].innerText);
+            }
+
+            //Get all Student Name
+            var studentList = [];
+            ul = document.getElementById("formStud");
+            items = ul.getElementsByTagName("li");
+            for (var i = 0; i < items.length; i++) {
+                studentList.push(items[i].innerText);
+            }
+
+            ModuleObj.studList = studentList;
+            ModuleObj.lectList = lectList;
+
+            if (ModuleObj.ModID != null && ModuleObj.ModStart != null && ModuleObj.ModuleName != null && ModuleObj.lectList != null && ModuleObj.studList != null && ModuleObj.ModStart != null && ModuleObj.ModEnd != null) {
+                $.ajax({
+                    url: "/AdminDashBoard/Module/NewModule",
+                    method: "POST",
+                    data: {
+                        __RequestVerificationToken: token,
+                        module: ModuleObj
+                    },
+                    success: function (data) {
+                        alert("Module Successfully Updated");
+                        window.location.href = data.Url;
+
+                    },
+                    error: function () {
+                        alert("Something when wrong, please check the form details");
+                    }
+                })
+            }
+            else {
+                alert("Fill Up all the form!");
+            }
+        })
+    });
+</script>
+

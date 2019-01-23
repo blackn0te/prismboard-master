@@ -215,6 +215,9 @@
     <Compile Include="Migrations\201712271549027_InitialCommit.Designer.cs">
       <DependentUpon>201712271549027_InitialCommit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Modules\SY_ModuleModel.cs" />
+    <Compile Include="Models\Modules\SY_ModuleViewModel.cs" />
+    <Compile Include="Models\Modules\SY_ShowModules.cs" />
     <Compile Include="Models\OAuth\FacebookOAuthData.cs" />
     <Compile Include="Models\OAuth\GoogleOAuthData.cs" />
     <Compile Include="Models\PostType.cs" />
@@ -428,6 +431,7 @@
       <DependentUpon>201802090649239_Sections.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
