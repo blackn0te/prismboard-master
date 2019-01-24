@@ -54,8 +54,13 @@
         public virtual DbSet<UploadedFile> UploadedFile { get; set; }
         public virtual DbSet<Favourite> Favourite { get; set; }
         public virtual DbSet<GlobalPermissionForRole> GlobalPermissionForRole { get; set; }
-
         public virtual DbSet<PostEdit> PostEdit { get; set; }
+        public virtual DbSet<Event> Event { get; set; }
+        public virtual DbSet<Student> Student { get; set; }
+        public virtual DbSet<StudentEvent> StudentEvent { get; set; }
+
+
+
 
 
         public override int SaveChanges()

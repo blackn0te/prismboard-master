@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Constants\CacheKeys.cs" />
+    <Compile Include="Data\Mapping\EventMapping.cs" />
     <Compile Include="Data\Mapping\LecturerMapping.cs" />
     <Compile Include="Data\Mapping\MaterialsMapping.cs" />
     <Compile Include="Data\Mapping\ModDetailMapping.cs" />
