@@ -63,10 +63,9 @@
         public virtual DbSet<SubmittedContent> SubmittedContents { get; set; }
         public virtual DbSet<TestDetails> TestDetails { get; set; }
         public virtual DbSet<SubmittedTest> SubmittedTests { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Lecturer> Lecturers { get; set; }
         public virtual DbSet<ModDetail> ModDetails { get; set; }
-        public virtual DbSet<Student> Students { get; set; }
-
 
         public override int SaveChanges()
         {

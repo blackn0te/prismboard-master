@@ -231,6 +231,8 @@
     <Content Include="Areas\Admin\Views\ModuleManage\DetailModule.cshtml" />
     <Content Include="Areas\Admin\Views\ModuleManage\Module.cshtml" />
     <Content Include="Areas\Admin\Views\ModuleManage\NewModule.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleManage\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleManage\EditModule.cshtml" />
     <None Include="Config\imageprocessor\security.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -526,6 +528,7 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\bootstrap\js\bootstrap.js" />
     <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap\js\jquery-3.3.1.min.js" />
     <Content Include="Content\bootstrap\js\npm.js" />
     <Content Include="Content\bootstrap\js\popper.min.js" />
     <Content Include="Content\cache\Cache.txt" />

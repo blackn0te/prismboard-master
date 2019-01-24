@@ -5,21 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MvcForum.Core.Utilities;
 
 namespace MvcForum.Core.Models.Entities
 {
     public partial class Lecturer
     {
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public Lecturer()
+        {
+            LecturerId = GuidComb.GenerateComb();
+        }
 
-        public int LecturerId { get; set; }
+        public Guid LecturerId { get; set; }
         public string LectName { get; set; }
         public string LectEmail { get; set; }
         public int LectNo { get; set; }
         public string ModuleGrp { get; set; }
-        public string ModuleId { get; set; }
 
     }
 }

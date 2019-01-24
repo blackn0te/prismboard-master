@@ -5,15 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MvcForum.Core.Utilities;
 
 namespace MvcForum.Core.Models.Entities
 {
     public partial class ModDetail
     {
+        public ModDetail() {
+            PersonId = GuidComb.GenerateComb();
+        }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int PersonId { get; set; }
+        public Guid PersonId { get; set; }
         public string PersonName { get; set; }
         public string PersonType { get; set; }
         public string ModuleId { get; set; }

@@ -1,8 +1,7 @@
-﻿@model PrismBoardProject.Models.Module
+﻿@model MvcForum.Core.Models.Entities.Module
 
 @{
     ViewBag.Title = "DeleteModule";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Deleting Module...</h2>
@@ -14,43 +13,44 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ModuleID)
+            @Html.DisplayNameFor(model => model.ModId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ModuleID)
+            @Html.DisplayFor(model => model.ModId)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ModuleName)
+            @Html.DisplayNameFor(model => model.ModName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ModuleName)
+            @Html.DisplayFor(model => model.ModName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ModuleStart)
+            @Html.DisplayNameFor(model => model.ModStart)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ModuleStart)
+            @Html.DisplayFor(model => model.ModStart)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ModuleEnd)
+            @Html.DisplayNameFor(model => model.ModEnd)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ModuleEnd)
+            @Html.DisplayFor(model => model.ModEnd)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm("DeleteModule","AdminDashBoard",FormMethod.Post)) {
+    @using (Html.BeginForm("DeleteModule","ModuleManage",FormMethod.Post)) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions">
+            <input type="hidden" value="@Model.ModId"/>
             <input type="submit" value="Delete" class="btn btn-dark" /> |
             @Html.ActionLink("Back to List", "Module")
         </div>
