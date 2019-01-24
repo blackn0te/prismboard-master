@@ -161,7 +161,7 @@
                     <a href="@Url.Action("BatchMoveTopics", "Batch", new { area = "Admin" }, null)" class="@(currentController == "batch" && currentAction == "batchmovetopics" ? "active" : "")">Batch Move Topics</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("BatchDeletePrivateMessages", "Batch", new { area = "Admin" }, null)" class="@(currentController == "batch" && currentAction == "batchdeleteprivatemessages" ? "active" : "")">Batch Delete Private Messages</a>
+                    <a hrsef="@Url.Action("BatchDeletePrivateMessages", "Batch", new { area = "Admin" }, null)" class="@(currentController == "batch" && currentAction == "batchdeleteprivatemessages" ? "active" : "")">Batch Delete Private Messages</a>
                 </li>
             </ul>
         </li>
@@ -169,10 +169,17 @@
             <a href="@Url.Action("Index", "Log", new { area = "Admin" })" class="@(currentController == "log" && currentAction == "index" ? "active" : "")"><i class="fa fa-fw fa-file-text-o"></i> Log</a>
         </li>
         <li>
-            <a href="@Url.Action("Module", "ModuleManage", new { area = "Admin"})" class="@(currentController == "modulemanage" && currentAction == "module" ? "active" : "")">
+            <a data-toggle="collapse" data-target="#module">
                 <i class="fa fa-fw fa-book"></i>
                 Module Management
             </a>
+            <ul id="module" class="collapse">
+                <li>
+                    <a href="@Url.Action("Module", "ModuleManage", new { area = "Admin"}, null)" class="@(currentController == "modulemanage" && currentAction == "module" ? "active" : "")">View Modules</a>
+                    <a href="@Url.Action("NewModule", "ModuleManage", new { area = "Admin"}, null)" class="@(currentController == "modulemanage" && currentAction == "newmodule" ? "active" : "")">Add New Module</a>
+                    <a href="@Url.Action("DeleteModule", "ModuleManage", new { area = "Admin"}, null)" class="@(currentController == "modulemanage" && currentAction == "deletemodule" ? "active" : "")">Delete A Module</a>
+                </li>
+            </ul>
         </li>
     </ul>
 </div>

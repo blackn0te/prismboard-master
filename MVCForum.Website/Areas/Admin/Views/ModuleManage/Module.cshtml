@@ -1,4 +1,5 @@
-﻿@model IEnumerable<MvcForum.Core.Models.Module>
+﻿@using MvcForum.Core.Models.Entities
+@model IEnumerable<MvcForum.Core.Models.Entities.Module>
 
 @{
     ViewBag.Title = "Module";
@@ -23,15 +24,15 @@
         {
             <tr>
                 <td scope="row">
-                    @Html.DisplayFor(modelItem => Module.ModuleID)
+                    @Html.DisplayFor(modelItem => Module.ModId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => Module.ModuleName)
+                    @Html.DisplayFor(modelItem => Module.ModName)
                 </td>
                 <td>
                     <button type="button" class="btn btn-info">Details</button>
                     <button type="button" class="btn btn-warning">Edit</button>
-                    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteModule", "AdminDashBoard", new { id = Module.ModuleID})'">Delete</button>
+                    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteModule", "AdminDashBoard", new { id = Module.ModId})'">Delete</button>
                 </td>
 
             </tr>

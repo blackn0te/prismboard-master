@@ -167,6 +167,7 @@
     <Compile Include="ViewModels\Member\ActiveMembersViewModel.cs" />
     <Compile Include="ViewModels\Member\ListLatestMembersViewModel.cs" />
     <Compile Include="ViewModels\Moderate\ModerateViewModel.cs" />
+    <Compile Include="ViewModels\Module\SY_ModuleViewModel.cs" />
     <Compile Include="ViewModels\Poll\PollViewModel.cs" />
     <Compile Include="ViewModels\Poll\UpdatePollViewModel.cs" />
     <Compile Include="ViewModels\Post\CreateAjaxPostViewModel.cs" />
