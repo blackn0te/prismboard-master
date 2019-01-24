@@ -167,6 +167,7 @@
     <Compile Include="ViewModels\Member\ActiveMembersViewModel.cs" />
     <Compile Include="ViewModels\Member\ListLatestMembersViewModel.cs" />
     <Compile Include="ViewModels\Moderate\ModerateViewModel.cs" />
+    <Compile Include="ViewModels\Module\SY_ModuleViewModel.cs" />
     <Compile Include="ViewModels\Poll\PollViewModel.cs" />
     <Compile Include="ViewModels\Poll\UpdatePollViewModel.cs" />
     <Compile Include="ViewModels\Post\CreateAjaxPostViewModel.cs" />
@@ -525,6 +526,7 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\bootstrap\js\bootstrap.js" />
     <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap\js\jquery-3.3.1.min.js" />
     <Content Include="Content\bootstrap\js\npm.js" />
     <Content Include="Content\bootstrap\js\popper.min.js" />
     <Content Include="Content\cache\Cache.txt" />
