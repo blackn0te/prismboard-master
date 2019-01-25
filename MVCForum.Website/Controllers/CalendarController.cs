@@ -4,26 +4,10 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Security.Principal;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Web;
-    using System.Web.Hosting;
     using System.Web.Mvc;
-    using System.Web.Security;
-    using Core;
-    using Core.Constants;
-    using Core.ExtensionMethods;
     using Core.Interfaces;
-    using Core.Interfaces.Pipeline;
     using Core.Interfaces.Services;
-    using Core.Models;
-    using Core.Models.Enums;
     using Core.Models.Entities;
-    using Core.Models.General;
-    using Core.Pipeline;
-    using Core.Reflection;
-    using MvcForum.Web.ViewModels;
     using MvcForum.Core.Data.Context;
     using System.Net;
 
@@ -52,8 +36,6 @@
 
             Event eventList = new Event();
             //db.Events.All
-
-           
             
             using (MvcForumContext db = new MvcForumContext())
             {
@@ -139,8 +121,6 @@
                 Console.WriteLine(e);
                 checker = false;
             }
-
-            
 
             if (checker)
             {
