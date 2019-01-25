@@ -2,11 +2,10 @@
 @model dynamic
 
 @{
-    ViewBag.Title = "Create Module";
-
+    ViewBag.Title = "Edit Module";
 }
 
-<h1>Creation Of Module</h1>
+<h1> Editing of Module </h1>
 <div class="container">
     @using (Html.BeginForm())
     {
@@ -151,7 +150,7 @@
         lectId = row;
         console.log(row);
     });
-    $(function (){
+    $(function () {
         $('#addLectBtn').click(function () {
             var currentList = [];
             $("#formLect li").each(function (i, li) {
@@ -166,7 +165,7 @@
             }
         });
     });
-    
+
 
     //Student Side
     var studId;
@@ -204,7 +203,7 @@
             ModuleObj.ModuleName = $("#ModTittle").val();
             ModuleObj.ModStart = $("#modStart").val();
             ModuleObj.ModEnd = $("#modEnd").val();
-             
+
 
             //Get all Lecturer Name
             var lectList = [];
@@ -248,4 +247,3 @@
         })
     });
 </script>
-

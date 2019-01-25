@@ -231,6 +231,8 @@
     <Content Include="Areas\Admin\Views\ModuleManage\DetailModule.cshtml" />
     <Content Include="Areas\Admin\Views\ModuleManage\Module.cshtml" />
     <Content Include="Areas\Admin\Views\ModuleManage\NewModule.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleManage\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\ModuleManage\EditModule.cshtml" />
     <None Include="Config\imageprocessor\security.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>

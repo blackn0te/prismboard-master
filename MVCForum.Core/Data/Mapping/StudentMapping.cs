@@ -14,10 +14,10 @@
             Property(x => x.PemGroup).IsRequired();
             Property(x => x.Pem).IsRequired();
             Property(x => x.StudentCourse).IsRequired();
-            Property(x => x.StudentModule).IsRequired();
             Property(x => x.StudentSchool).IsRequired();
             Property(x => x.AltEmail).IsOptional();
-
+            Property(x => x.Pem).IsRequired();
+            Property(x => x.PemGroup).IsRequired();
 
         }
 
