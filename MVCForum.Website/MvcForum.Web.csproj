@@ -88,6 +88,7 @@
     <Compile Include="Areas\Admin\Controllers\BannedWordController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModuleManageController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ModerateController.cs" />
     <Compile Include="ExtensionMethods\CategoryViewModelExtensions.cs" />
     <Compile Include="ViewModels\Admin\AdminBadgeViewModels.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="ViewModels\Admin\AdminCategoryViewModels.cs" />
     <Compile Include="ViewModels\Admin\AdminLanguageViewModels.cs" />
     <Compile Include="ViewModels\Admin\AdminViewModels.cs" />
+    <Compile Include="ViewModels\Calendar\CalendarModel.cs" />
     <Compile Include="ViewModels\Category\SectionListViewModel.cs" />
     <Compile Include="ViewModels\GenericMessageViewModel.cs" />
     <Compile Include="ViewModels\Admin\LogViewModels.cs" />
@@ -532,6 +534,7 @@
     <Content Include="Content\bootstrap\js\npm.js" />
     <Content Include="Content\bootstrap\js\popper.min.js" />
     <Content Include="Content\cache\Cache.txt" />
+    <Content Include="Content\EditCalendarEventCSS.css" />
     <Content Include="Content\Emails\EmailNotification.htm" />
     <Content Include="Content\Images\ajaxloader-large.gif" />
     <Content Include="Content\Images\ajaxloader.gif" />
@@ -666,6 +669,7 @@
     <Content Include="Content\spectrum\i18n\jquery.spectrum-zh-cn.js" />
     <Content Include="Content\spectrum\spectrum.css" />
     <Content Include="Content\spectrum\spectrum.js" />
+    <Content Include="Content\StudCalendarCSS.css" />
     <Content Include="Content\tinymce.css" />
     <Content Include="Content\uploads\readme.txt" />
     <Content Include="Global.asax" />
@@ -734,6 +738,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\StudCalendarJS.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.min.js" />
     <Content Include="Scripts\tinymce\license.txt" />
     <Content Include="Scripts\tinymce\plugins\advlist\plugin.js" />
@@ -947,6 +953,7 @@
     <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Scripts\wrjreb.js" />
     <Content Include="Themes\Metro\Content\Styles\Theme.css">
       <DependentUpon>Theme.scss</DependentUpon>
     </Content>
@@ -1189,6 +1196,8 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Views\Category\ListSections.cshtml" />
     <None Include="Properties\PublishProfiles\prismboard - Web Deploy.pubxml" />
+    <Content Include="Views\Calendar\EditCalendarEvent.cshtml" />
+    <Content Include="Views\Calendar\StudentCalendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\StorageProviders\" />
@@ -1510,6 +1519,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -1526,7 +1538,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>9666</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
@@ -1536,6 +1548,9 @@
           <CustomServerUrl>
           </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="SelfHostServer">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:9666/" workingDir="" />
+          </servers>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

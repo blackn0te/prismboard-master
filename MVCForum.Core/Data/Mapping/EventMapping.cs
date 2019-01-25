@@ -15,7 +15,8 @@
             Property(x => x.TimeEnd).IsRequired();
             Property(x => x.Module).IsOptional().HasMaxLength(20);
             Property(x => x.EventType).IsRequired();
-            
+            Property(x => x.EventName).IsRequired();
+
         }
     }
 }

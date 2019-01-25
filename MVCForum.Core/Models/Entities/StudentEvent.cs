@@ -4,15 +4,15 @@
     using Interfaces;
     using Utilities;
 
-    public partial class StudentEvent : IBaseEntity
+    public partial class StudentEvent 
     {
         public StudentEvent()
         {
-            Id = GuidComb.GenerateComb();
+            EventId = GuidComb.GenerateComb();
         }
-        public Guid Id { get; set; }
+        public Guid EventId { get; set; }
         public string AdminNo { get; set; }
-        public string EventId { get; set; }
+        public string Id { get; set; }
 
     }
 }

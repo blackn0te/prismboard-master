@@ -1,0 +1,247 @@
+﻿@model List<MvcForum.Web.ViewModels.Calendar.CalendarModel>
+
+@{
+    ViewBag.Title = "Calendar";
+}
+
+
+<link href="../Content/StudCalendarCSS.css" rel="stylesheet">
+<div>
+    <br /><br /><br /><br /><br /><br />
+    <div class="container">
+        <h1>Your Calendar</h1>
+        <!--Modal Popup-->
+        <div id="displayBox" style="display: none;" class="modal">
+            <div class="imgcontainer">
+                <div class="modal-content animate">
+                    <span onclick="closeModal()" class="close" title="Close Modal">&times;</span>
+                    <div id="popDiv">
+                        <div id="dateSetYear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="v-cal">
+            <div class="vcal-header">
+                <button class="vcal-btn" data-calendar-toggle="previous">
+                    <svg height="24" version="1.1" width="24">
+                        <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+                    </svg>
+                </button>
+                <div class="vcal-header__label" data-calendar-label="month">
+                </div>
+                <button class="vcal-btn" data-calendar-toggle="next">
+                    <svg height="24" version="1.1" width="24">
+                        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="vcal-week">
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span>Sun</span>
+            </div>
+            <div class="vcal-body" data-calendar-area="month"></div>
+        </div>
+    </div>
+</div>
+<script src="../Scripts/StudCalendarJS.js" type="text/javascript"></script>
+<script>
+
+            var events = (@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)));
+            //showing of the values
+            var displayString = "Very unique: ";
+            for (var x = 0; x < events.length; x++) {
+                displayString += events[x].EventName + " ";
+                if (x != events.length) {
+                    displayString += ",";
+                }
+            }
+            //alert("Events loaded:  " + displayString);
+            window.addEventListener('load', function () {
+                vanillaCalendar.init({
+                    disablePastDays: true
+                });
+
+
+                for (var position = 0; position < events.length; position++) {
+                    findDate(events[position]);
+                }
+
+                //Retrieve the list from C# controller
+                //Instead of using data from session, take data from list
+                //Insert the events through a for loop, like findDate()
+                //Display
+
+
+                //findDate("Event Server");
+                //findDate("Event Ispa");
+                //findDate("Event PracticalAssignment");
+                document.getElementsByClassName("vcal-btn")[0].onclick = function () {
+                    if (this.usedDate != []) {
+                        this.usedDate = [];
+                    }
+                    for (var position = 0; position < events.length; position++) {
+                        findDate(events[position]);
+                    }
+                }
+                document.getElementsByClassName("vcal-btn")[1].onclick = function () {
+
+                    //findDate("Event Cfort");
+                    //findDate("Event Server");
+                    //findDate("Event Ispa");
+                    //findDate("Event PracticalAssignment");
+
+                    if (this.usedDate != []) {
+                        this.usedDate = [];
+                    }
+                    for (var position = 0; position < events.length; position++) {
+                        findDate(events[position]);
+                    }
+                }
+            })
+            //eventCount() function
+            function eventCount(dayComp) {
+                if (this.usedDate.length == 0) {
+                    //there is no events
+
+                }
+                else {
+                    //there is/are events
+                    for (var i = 0; i < this.usedDate.length; i++) {
+                        var countDay = dayComp.split("-", 1);
+                        var vcal = document.querySelectorAll(".vcal-date");
+                        console.log(countDay);
+
+                        var check = vcal[parseInt(countDay) - 1].getAttribute("name");
+                        var divideNum = parseInt(this.usedDate[i].split("")[10]);
+                        console.log(check + " " + divideNum);
+
+                        if (check != null) {
+                            var divisibleNum = "";
+                            if (check.split(",")[0] == "null") {
+                                divisibleNum = check.split(",").length - 1 / divideNum;
+                            }
+                            else {
+                                divisibleNum = check.split(",").length / divideNum;
+                            }
+
+                            console.log("check " + divisibleNum)
+                            // check = document.getElementsByName("Event Cfort");
+                            var des = "";
+                            var holder = check.split(",");
+                            console.log("holder: " + holder + " Divi " + divisibleNum);
+                            if (check.split(",")[0] == "null") {
+                                for (var x = 1; x < divisibleNum; x++) {
+                                    console.log("Holder in: " + holder[x]);
+                                    des += holder[x] + " ";
+                                }
+                                console.log("Equated! " + " des =" + des);
+                            }
+                            else {
+                                for (var x = 0; x < divisibleNum; x++) {
+                                    console.log("Holder in: " + holder[x]);
+                                    des += holder[x] + " ";
+                                }
+                                console.log("Equated! " + " des =" + des);
+                            }
+                            var val = this.usedDate[i].split("", 10);
+
+                            var hold = "";
+
+                            hold = val[8] + val[9] + val[7] + val[5] + val[6] + val[4] + val[0] + val[1] + val[2] + val[3];
+
+                            console.log("val rebuilt: " + hold + " " + typeof hold);
+                            console.log("val of dayComp: " + dayComp + " " + typeof dayComp);
+
+                            if (dayComp === hold) {
+                                console.log("val true");
+                                var keystring = des.split(" ")[0] + " " + des.split(" ")[1];
+                                console.log("val check: " + keystring);
+                                var describe = "You have no events going on today!";
+
+                                try {
+                                    //var value = this.events.find("Date" == hold);
+                                    //var result = this.events.filter(obj => {
+                                    //    return obj.Date.toString === hold
+                                    //})
+                                    var hold2 = "";
+                                    for (var x = 0; x < val.length; x++) {
+                                        hold2 += val[x];
+                                    }
+                                    for (var looper = 0; looper < this.events.length; looper++) {
+                                        console.log("this.events: " + this.events[looper].Date);
+                                        console.log("des: " + hold2);
+
+                                        if (this.events[looper].Date === hold2) {
+                                            console.log("ran!");
+                                            describe = this.events[looper].Description;
+                                            break;
+                                        }
+                                        //cont loop
+                                    }
+                                    console.log("try: " + describe);
+                                    //var descStored = this.eventObj.Description();
+                                    //var nameToCompare = this.eventObj.EventName();
+                                    //console.log("DesStored: " + descStored + " name to cmp " + nameToCompare);
+                                    //if (keystring == nameToCompare) {
+                                    //    //same string name, can proceed
+                                    //    describe = descStored;
+                                    //}
+                                    //else {
+                                    //    //not the same string, break out of loop
+                                    //    break
+                                    //}
+                                }
+                                catch (err) {
+                                    console.log(err);
+                                }
+                                //var key = localStorage[keystring];
+                                //key = JSON.parse(key);//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                //if (key != null) {
+                                //    var describe = key.Description;
+                                //}
+
+                                //Create portion
+                                var div = document.createElement("div");
+                                div.setAttribute("class", "desRead" + " " + des)
+                                document.getElementById("popDiv").appendChild(div);
+                                var btn = document.createElement("button");
+                                btn.setAttribute("class", "collapsible" + " " + des);
+                                var btnText = document.createTextNode(des + " ▼");//change the word Des to the event title
+                                btn.addEventListener("click", function () {
+                                    this.classList.toggle("active");
+                                    var content = this.nextElementSibling;
+                                    if (content.style.display === "block") {
+                                        content.style.display = "none";
+                                    }
+                                    else {
+                                        content.style.width = "200px";
+                                        content.style.height = "150px";
+                                        content.style.color = "white";
+                                        content.style.display = "block";
+                                    }
+                                });
+                                btn.appendChild(btnText);
+                                document.getElementsByClassName("desRead" + " " + des)[0].appendChild(btn);
+                                var div1 = document.createElement("div");
+                                div1.setAttribute("class", "content" + " " + des)
+                                document.getElementsByClassName("desRead" + " " + des)[0].appendChild(div1);
+                                var p = document.createElement("P");
+                                var pText = document.createTextNode(describe);//This is where the des will be placed
+                                p.appendChild(pText);
+                                document.getElementsByClassName("content" + " " + des)[0].appendChild(p);
+
+                            }
+                            else {
+                                console.log("Not the same");
+                            }
+                        }
+                    }
+                }
+            }
+</script>

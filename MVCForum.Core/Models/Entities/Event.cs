@@ -15,6 +15,7 @@
         public string Description { get; set; }
         public string TimeStart {get; set;}
         public string TimeEnd { get; set; }
+        public string EventName { get; set; }
         public string Module { get; set; }
         public string EventType { get; set; }
 
