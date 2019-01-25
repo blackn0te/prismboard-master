@@ -77,6 +77,12 @@
                 new {controller = "Home", action = "Index", id = UrlParameter.Optional} // Parameter defaults
             );
             //.RouteHandler = new SlugRouteHandler()
+
+            routes.MapRoute(
+               "Calendar", // Route name
+               "{controller}/{action}/{id}", // URL with parameters
+               new { controller = "Calendar", action = "StudentCalendar", id = UrlParameter.Optional } // Parameter defaults
+           );
         }
     }
 }

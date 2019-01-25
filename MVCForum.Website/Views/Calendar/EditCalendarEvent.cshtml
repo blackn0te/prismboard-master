@@ -1,4 +1,4 @@
-﻿@model PrismBoardProject.Models.CalendarEdit
+﻿@model MvcForum.Web.ViewModels.Calendar.CalendarEdit
 
 <!DOCTYPE html>
 <html>
@@ -36,8 +36,8 @@
                 <br />
                 <div class="col-md-9">
                     @*@Html.EditorFor(model => model.EventCode1, @Html.DropDownListFor(mod => mod.EventCode1, Model.EventCodeList))*@
-                    @{ var tempModel = new PrismBoardProject.Models.CalendarEdit(); }
-                    @Html.DropDownListFor(model => model.EventCode1, tempModel.EventCodeList)
+                    @{ var tempModel = new MvcForum.Web.ViewModels.Calendar.CalendarEdit(); }
+                    @Html.DropDownListFor(model => model.EventType, tempModel.EventCodeList)
 
                     @*<select class="form-control" for="EventCode1" id="eventType" name="eventType">
                         <option value="null"></option>
@@ -45,7 +45,7 @@
                         <option value="AS">Assignment</option>
                         <option value="EV">Other events</option>
                     </select>*@
-                    @Html.EditorFor(model => model.EventCode2, new { htmlAttributes = new { @class = "form-control", id = "eventCodeIn", placeholder = "Input event code: e.g 0001", maxlength = "4" } })
+                    @*@Html.EditorFor(model => model.EventCode2, new { htmlAttributes = new { @class = "form-control", id = "eventCodeIn", placeholder = "Input event code: e.g 0001", maxlength = "4" } })*@
                 </div>
             </div>
             <br />
