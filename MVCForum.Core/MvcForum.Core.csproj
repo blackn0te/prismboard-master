@@ -44,6 +44,7 @@
     <Compile Include="Data\Mapping\MaterialsMapping.cs" />
     <Compile Include="Data\Mapping\ModDetailMapping.cs" />
     <Compile Include="Data\Mapping\ModuleMapping.cs" />
+    <Compile Include="Data\Mapping\StudentEventMapping.cs" />
     <Compile Include="Data\Mapping\StudentMapping.cs" />
     <Compile Include="Data\Mapping\SectionMapping.cs" />
     <Compile Include="Data\Mapping\SubmittableFileMapping.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Models\Entities\ExtendedDataEntity.cs" />
     <Compile Include="Models\Entities\PostEdit.cs" />
     <Compile Include="Models\Entities\Section.cs" />
+    <Compile Include="Models\Entities\StudentEvent.cs" />
     <Compile Include="Models\Entities\SubmittableFile.cs" />
     <Compile Include="Models\Entities\SubmittedContent.cs" />
     <Compile Include="Models\Entities\SubmittedTest.cs" />

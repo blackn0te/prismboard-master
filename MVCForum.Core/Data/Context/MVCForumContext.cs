@@ -23,6 +23,8 @@
             Configuration.LazyLoadingEnabled = true;
         }
 
+
+        //Ravin
         public virtual DbSet<Activity> Activity { get; set; }
         public virtual DbSet<Badge> Badge { get; set; }
         public virtual DbSet<Block> Block { get; set; }
@@ -55,8 +57,10 @@
         public virtual DbSet<Favourite> Favourite { get; set; }
         public virtual DbSet<GlobalPermissionForRole> GlobalPermissionForRole { get; set; }
         public virtual DbSet<PostEdit> PostEdit { get; set; }
+
+
+        //Beckham DB
         public virtual DbSet<Event> Event { get; set; }
-        public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<StudentEvent> StudentEvent { get; set; }
 
 

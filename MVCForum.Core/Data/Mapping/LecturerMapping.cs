@@ -8,6 +8,7 @@
         public LecturerMapping()
         {
             HasKey(x => x.LecturerId);
+            Property(x => x.LecturerId).IsRequired();
             Property(x => x.LectName).IsRequired();
             Property(x => x.LectEmail).IsRequired();
             Property(x => x.LectNo).IsRequired();

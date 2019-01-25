@@ -8,6 +8,7 @@
         public ModuleMapping()
         {
             HasKey(x => x.ModId);
+            Property(x => x.ModId).IsRequired();
             Property(x => x.ModName).IsRequired();
             Property(x => x.ModStart).IsRequired();
             Property(x => x.ModEnd).IsRequired();

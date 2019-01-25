@@ -15,8 +15,6 @@
         public string StudentCourse { get; set; }
         public string StudentSchool { get; set; }
         public string AltEmail { get; set; }
-        public string PemGroup { get; set; }
-        public string Pem { get; set; }
 
     }
 }
