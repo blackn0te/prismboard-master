@@ -130,7 +130,7 @@
                 </li>
             </ul>
         </li>
-        <li>
+        <!---li>
             <a href="#" data-toggle="collapse" data-target="#language">
                 <i class="fa fa-fw fa-language"></i> Languages <i class="fa fa-fw fa-caret-down"></i>
             </a>
@@ -145,7 +145,7 @@
                     <a href="@Url.Action("Languages", "ImportExport", new { area = "Admin" })" class="@(currentController == "importexport" && currentAction == "languages" ? "active" : "")">Import / Export</a>
                 </li>
             </ul>
-        </li>
+        </li--->
         <li>
             <a href="@Url.Action("CustomCode", "Settings", new { area = "Admin" }, null)" class="@(currentController == "settings" && currentAction == "customcode" ? "active" : "")"><i class="fa fa-fw fa-code"></i> Custom Code</a>
         </li>
