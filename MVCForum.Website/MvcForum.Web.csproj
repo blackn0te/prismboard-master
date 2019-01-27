@@ -92,7 +92,7 @@
     <Compile Include="ChatHub.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
-    <Compile Include="Controllers\EditCalendarController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EditCalendarController.cs" />
     <Compile Include="Controllers\ModerateController.cs" />
     <Compile Include="ExtensionMethods\CategoryViewModelExtensions.cs" />
     <Compile Include="ViewModels\Admin\AdminBadgeViewModels.cs" />
@@ -240,6 +240,7 @@
     <Content Include="Areas\Admin\Views\ModuleManage\NewModule.cshtml" />
     <Content Include="Areas\Admin\Views\ModuleManage\Error.cshtml" />
     <Content Include="Areas\Admin\Views\ModuleManage\EditModule.cshtml" />
+    <Content Include="Areas\Admin\Views\Calendar\RemoveCalendarEvent.cshtml" />
     <None Include="Config\imageprocessor\security.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -1204,7 +1205,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Views\Category\ListSections.cshtml" />
     <None Include="Properties\PublishProfiles\prismboard - Web Deploy.pubxml" />
-    <Content Include="Views\Calendar\EditCalendarEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\Calendar\EditCalendarEvent.cshtml" />
     <Content Include="Views\Calendar\StudentCalendar.cshtml" />
     <Content Include="Views\Chat\Chat.cshtml" />
   </ItemGroup>

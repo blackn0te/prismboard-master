@@ -46,7 +46,10 @@
                                  c.TimeStart,
                                  c.TimeEnd
                              };
-               
+
+                //add in link between user and the event
+                //db.Students
+
                 List<CalendarModel> eList = new List<CalendarModel>();
 
                 if (query != null)
