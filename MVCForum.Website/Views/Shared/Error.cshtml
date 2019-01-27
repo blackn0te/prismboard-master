@@ -5,5 +5,12 @@
 }
 
 <h2>
-    Sorry, an error occurred while processing your request.
+    Hey, sorry we couldn’t fetch the page you were looking for! :(
 </h2>
+<button id="backToHome"></button>
+
+<script>
+    document.getElementById("backToHome").onclick = function () {
+        windows.location("../Home/Index");
+    }
+</script>

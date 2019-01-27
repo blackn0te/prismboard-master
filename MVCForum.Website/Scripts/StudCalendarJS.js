@@ -89,9 +89,6 @@
             console.log("day " + dayComp);
             eventCount(dayComp);
 
-
-            // display.style.opacity =  ( display.style.opacity ==  "0" ? "1" : "0");
-
         })
     },
     createMonth: function () {
@@ -326,126 +323,126 @@ function checkRepeats(date) {
     console.log("usedDate " + this.usedDate);
 }
 
-//function eventCount(dayComp, event) {
-//    if (this.usedDate.length == 0) {
-//        //there is no events
+function eventCount(dayComp) {
+    if (this.usedDate.length == 0) {
+        //there is no events
 
-//    }
-//    else {
-//        //there is/are events
-//        for (var i = 0; i < this.usedDate.length; i++) {
-//            var countDay = dayComp.split("-", 1);
-//            var vcal = document.querySelectorAll(".vcal-date");
-//            console.log(countDay);
+    }
+    else {
+        //there is/are events
+        for (var i = 0; i < this.usedDate.length; i++) {
+            var countDay = dayComp.split("-", 1);
+            var vcal = document.querySelectorAll(".vcal-date");
+            console.log(countDay);
 
-//            var check = vcal[parseInt(countDay) - 1].getAttribute("name");
-//            var divideNum = parseInt(this.usedDate[i].split("")[10]);
-//            console.log(check + " " + divideNum);
+            var check = vcal[parseInt(countDay) - 1].getAttribute("name");
+            var divideNum = parseInt(this.usedDate[i].split("")[10]);
+            console.log(check + " " + divideNum);
 
-//            if (check != null) {
-//                var divisibleNum = "";
-//                if (check.split(",")[0] == "null") {
-//                    divisibleNum = check.split(",").length - 1 / divideNum;
-//                }
-//                else {
-//                    divisibleNum = check.split(",").length / divideNum;
-//                }
+            if (check != null) {
+                var divisibleNum = "";
+                if (check.split(",")[0] == "null") {
+                    divisibleNum = check.split(",").length - 1 / divideNum;
+                }
+                else {
+                    divisibleNum = check.split(",").length / divideNum;
+                }
 
-//                console.log("check " + divisibleNum)
-//                // check = document.getElementsByName("Event Cfort");
-//                var des = "";
-//                var holder = check.split(",");
-//                console.log("holder: " + holder + " Divi " + divisibleNum);
-//                if (check.split(",")[0] == "null") {
-//                    for (var x = 1; x < divisibleNum; x++) {
-//                        console.log("Holder in: " + holder[x]);
-//                        des += holder[x] + " ";
-//                    }
-//                    console.log("Equated! " + " des =" + des);
-//                }
-//                else {
-//                    for (var x = 0; x < divisibleNum; x++) {
-//                        console.log("Holder in: " + holder[x]);
-//                        des += holder[x] + " ";
-//                    }
-//                    console.log("Equated! " + " des =" + des);
-//                }
-//                var val = this.usedDate[i].split("", 10);
+                console.log("check " + divisibleNum)
+                // check = document.getElementsByName("Event Cfort");
+                var des = "";
+                var holder = check.split(",");
+                console.log("holder: " + holder + " Divi " + divisibleNum);
+                if (check.split(",")[0] == "null") {
+                    for (var x = 1; x < divisibleNum; x++) {
+                        console.log("Holder in: " + holder[x]);
+                        des += holder[x] + " ";
+                    }
+                    console.log("Equated! " + " des =" + des);
+                }
+                else {
+                    for (var x = 0; x < divisibleNum; x++) {
+                        console.log("Holder in: " + holder[x]);
+                        des += holder[x] + " ";
+                    }
+                    console.log("Equated! " + " des =" + des);
+                }
+                var val = this.usedDate[i].split("", 10);
 
-//                var hold = "";
-//                //for (var x = 0; x < val.length; x++) {
-//                //    hold += val[x];
-//                //}
-//                hold = val[8] + val[9] + val[7] + val[5] + val[6] + val[4] + val[0] + val[1] + val[2] + val[3];
+                var hold = "";
+                //for (var x = 0; x < val.length; x++) {
+                //    hold += val[x];
+                //}
+                hold = val[8] + val[9] + val[7] + val[5] + val[6] + val[4] + val[0] + val[1] + val[2] + val[3];
 
-//                console.log("val rebuilt: " + hold + " " + typeof hold);
-//                console.log("val of dayComp: " + dayComp + " " + typeof dayComp);
+                console.log("val rebuilt: " + hold + " " + typeof hold);
+                console.log("val of dayComp: " + dayComp + " " + typeof dayComp);
 
-//                if (dayComp === hold) {
-//                    console.log("val true");
-//                    var keystring = des.split(" ")[0] + " " + des.split(" ")[1];
-//                    console.log("val check: " + keystring);
-//                    var describe = "You have no events going on today!";
+                if (dayComp === hold) {
+                    console.log("val true");
+                    var keystring = des.split(" ")[0] + " " + des.split(" ")[1];
+                    console.log("val check: " + keystring);
+                    var describe = "You have no events going on today!";
 
-//                    try {
-//                        var descStored = this.eventObj.Description();
-//                        var nameToCompare = this.eventObj.EventName();
-//                        console.log("DesStored: " + descStored + " name to cmp " + nameToCompare);
-//                        if (keystring == nameToCompare) {
-//                            //same string name, can proceed
-//                            describe = descStored;
-//                        }
-//                        else {
-//                            //not the same string, break out of loop
-//                            break
-//                        }
-//                    }
-//                    catch (err) {
-//                        console.log(err);
-//                    }
-//                    //var key = localStorage[keystring];
-//                    //key = JSON.parse(key);//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                    //if (key != null) {
-//                    //    var describe = key.Description;
-//                    //}
+                    try {
+                        var descStored = this.eventObj.Description();
+                        var nameToCompare = this.eventObj.EventName();
+                        console.log("DesStored: " + descStored + " name to cmp " + nameToCompare);
+                        if (keystring == nameToCompare) {
+                            //same string name, can proceed
+                            describe = descStored;
+                        }
+                        else {
+                            //not the same string, break out of loop
+                            break
+                        }
+                    }
+                    catch (err) {
+                        console.log(err);
+                    }
+                    //var key = localStorage[keystring];
+                    //key = JSON.parse(key);//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //if (key != null) {
+                    //    var describe = key.Description;
+                    //}
 
-//                    //Create portion
-//                    var div = document.createElement("div");
-//                    div.setAttribute("class", "desRead" + " " + des)
-//                    document.getElementById("popDiv").appendChild(div);
-//                    var btn = document.createElement("button");
-//                    btn.setAttribute("class", "collapsible" + " " + des);
-//                    var btnText = document.createTextNode(des + " ▼");//change the word Des to the event title 
-//                    btn.addEventListener("click", function () {
-//                        this.classList.toggle("active");
-//                        var content = this.nextElementSibling;
-//                        if (content.style.display === "block") {
-//                            content.style.display = "none";
-//                        }
-//                        else {
-//                            content.style.width = "200px";
-//                            content.style.height = "200px";
-//                            content.style.display = "block";
-//                        }
-//                    });
-//                    btn.appendChild(btnText);
-//                    document.getElementsByClassName("desRead" + " " + des)[0].appendChild(btn);
-//                    var div1 = document.createElement("div");
-//                    div1.setAttribute("class", "content" + " " + des)
-//                    document.getElementsByClassName("desRead" + " " + des)[0].appendChild(div1);
-//                    var p = document.createElement("P");
-//                    var pText = document.createTextNode(describe);//This is where the des will be placed 
-//                    p.appendChild(pText);
-//                    document.getElementsByClassName("content" + " " + des)[0].appendChild(p);
+                    //Create portion
+                    var div = document.createElement("div");
+                    div.setAttribute("class", "desRead" + " " + des)
+                    document.getElementById("popDiv").appendChild(div);
+                    var btn = document.createElement("button");
+                    btn.setAttribute("class", "collapsible" + " " + des);
+                    var btnText = document.createTextNode(des + " ▼");//change the word Des to the event title 
+                    btn.addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        }
+                        else {
+                            content.style.width = "200px";
+                            content.style.height = "200px";
+                            content.style.display = "block";
+                        }
+                    });
+                    btn.appendChild(btnText);
+                    document.getElementsByClassName("desRead" + " " + des)[0].appendChild(btn);
+                    var div1 = document.createElement("div");
+                    div1.setAttribute("class", "content" + " " + des)
+                    document.getElementsByClassName("desRead" + " " + des)[0].appendChild(div1);
+                    var p = document.createElement("P");
+                    var pText = document.createTextNode(describe);//This is where the des will be placed 
+                    p.appendChild(pText);
+                    document.getElementsByClassName("content" + " " + des)[0].appendChild(p);
 
-//                }
-//                else {
-//                    console.log("Not the same");
-//                }
-//            }
-//        }
-//    }
-//}
+                }
+                else {
+                    console.log("Not the same");
+                }
+            }
+        }
+    }
+}
 
 
 function writeCookie(Event, EventID, Date, Time) {

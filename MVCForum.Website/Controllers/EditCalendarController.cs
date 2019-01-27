@@ -11,10 +11,9 @@
     using MvcForum.Core.Data.Context;
     using Module = Core.Models.Entities.Module;
 
-    public class CalendarController : BaseController
+    public class EditCalendarController : BaseController
     {
-
-        public CalendarController(ILoggingService loggingService, IMembershipService membershipService,
+        public EditCalendarController(ILoggingService loggingService, IMembershipService membershipService,
             ILocalizationService localizationService, IRoleService roleService, ISettingsService settingsService,
             IPostService postService, IUploadedFileService uploadedFileService, ICacheService cacheService,
             IMvcForumContext context)
@@ -22,56 +21,6 @@
                 settingsService, cacheService, context)
         {
 
-        }
-
-        // GET: Calendar/StudentCalendar
-        public ActionResult StudentCalendar()
-        {
-            //first get userid through method ontop, string userid
-            //Second, mapping/sql query of events where studentid = userid ^
-            //return list of events created by sql in view() method
-            //populate cshtml with model returned
-
-            using (MvcForumContext db = new MvcForumContext())
-            {
-                var query = from c in db.Event
-                            join s in db.StudentEvent 
-                            on c.Id equals s.EventId
-                            where c.Id == s.EventId
-                            select new
-                             {
-                                 c.EventName,
-                                 c.Description,
-                                 c.Date,
-                                 c.TimeStart,
-                                 c.TimeEnd
-                             };
-               
-                List<CalendarModel> eList = new List<CalendarModel>();
-
-                if (query != null)
-                {
-                    foreach (var item in query)
-                    {
-                        CalendarModel addable = new CalendarModel
-                        {
-                            Date = item.Date,
-                            EventName = item.EventName,
-                            EventCode = item.Date,
-                            TimeStart = item.TimeStart,
-                            TimeEnd = item.TimeEnd,
-                            Description = item.Description
-                        };
-                        eList.Add(addable);
-                    }
-                }
-                else
-                {
-                    //query == null
-                }
-                return View(eList);
-
-            }
         }
 
         //GET: Calendar/EditCalendarEvent

@@ -22,7 +22,8 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <IISExpressSSLPort>44330</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -91,6 +92,7 @@
     <Compile Include="ChatHub.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Controllers\EditCalendarController.cs" />
     <Compile Include="Controllers\ModerateController.cs" />
     <Compile Include="ExtensionMethods\CategoryViewModelExtensions.cs" />
     <Compile Include="ViewModels\Admin\AdminBadgeViewModels.cs" />
@@ -116,6 +118,7 @@
     <Compile Include="ViewModels\Admin\AdminLanguageViewModels.cs" />
     <Compile Include="ViewModels\Admin\AdminViewModels.cs" />
     <Compile Include="ViewModels\Calendar\CalendarModel.cs" />
+    <Compile Include="ViewModels\Calendar\EditCalendarModel.cs" />
     <Compile Include="ViewModels\Category\SectionListViewModel.cs" />
     <Compile Include="ViewModels\GenericMessageViewModel.cs" />
     <Compile Include="ViewModels\Admin\LogViewModels.cs" />
@@ -730,6 +733,7 @@
     <Content Include="Scripts\cache\Cache.txt" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Scripts\EditCalendarEventsJS.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.js" />
@@ -1208,6 +1212,8 @@
     <Folder Include="Application\StorageProviders\" />
     <Folder Include="App_Data\Plugins\" />
     <Folder Include="Content\languagepacks\" />
+    <Folder Include="Views\EditCalendar\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVCForum.Core\MvcForum.Core.csproj">

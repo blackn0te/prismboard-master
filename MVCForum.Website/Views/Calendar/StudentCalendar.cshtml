@@ -6,21 +6,23 @@
 
 
 <link href="../Content/StudCalendarCSS.css" rel="stylesheet">
+<!--Modal Popup-->
+<div id="displayBox" style="display: none;" class="modal">
+    <div class="imgcontainer">
+        <div class="modal-content animate">
+            <span onclick="closeModal()" class="close" title="Close Modal">&times;</span>
+            <div id="popDiv">
+                <div id="dateSetYear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Calendar-->
 <div>
     <br /><br /><br /><br /><br /><br />
     <div class="container">
         <h1>Your Calendar</h1>
-        <!--Modal Popup-->
-        <div id="displayBox" style="display: none;" class="modal">
-            <div class="imgcontainer">
-                <div class="modal-content animate">
-                    <span onclick="closeModal()" class="close" title="Close Modal">&times;</span>
-                    <div id="popDiv">
-                        <div id="dateSetYear"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div id="v-cal">
             <div class="vcal-header">
                 <button class="vcal-btn" data-calendar-toggle="previous">
@@ -46,6 +48,14 @@
                 <span>Sun</span>
             </div>
             <div class="vcal-body" data-calendar-area="month"></div>
+            <br />
+            <fieldset style="text-align: left;">
+                <legend>Event Colour Code:</legend>
+                Today: <div class="legendStyle" style="background-color: #10989e;"></div>
+                Examination: <div class="legendStyle" style="background-color: red;"></div>
+                Assignment: <div class="legendStyle" style="background-color: orange;"></div>
+                Others: <div class="legendStyle" style="background-color: green;"></div>
+            </fieldset>
         </div>
     </div>
 </div>
@@ -54,6 +64,7 @@
 
             var events = (@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)));
             //showing of the values
+            console.log("running");
             var displayString = "Very unique: ";
             for (var x = 0; x < events.length; x++) {
                 displayString += events[x].EventName + " ";
@@ -61,6 +72,9 @@
                     displayString += ",";
                 }
             }
+
+            console.log("running " +displayString);
+
             //alert("Events loaded:  " + displayString);
             window.addEventListener('load', function () {
                 vanillaCalendar.init({
@@ -77,10 +91,6 @@
                 //Insert the events through a for loop, like findDate()
                 //Display
 
-
-                //findDate("Event Server");
-                //findDate("Event Ispa");
-                //findDate("Event PracticalAssignment");
                 document.getElementsByClassName("vcal-btn")[0].onclick = function () {
                     if (this.usedDate != []) {
                         this.usedDate = [];
@@ -90,12 +100,6 @@
                     }
                 }
                 document.getElementsByClassName("vcal-btn")[1].onclick = function () {
-
-                    //findDate("Event Cfort");
-                    //findDate("Event Server");
-                    //findDate("Event Ispa");
-                    //findDate("Event PracticalAssignment");
-
                     if (this.usedDate != []) {
                         this.usedDate = [];
                     }

@@ -1,119 +1,93 @@
-﻿@model PrismBoardProject.Models.CalendarEdit
+﻿@model MvcForum.Web.ViewModels.Calendar.CalendarEdit
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Edit Events</title>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link href="../Content/EditCalendarEventCSS.css" rel="stylesheet">
-</head>
-<body>
-    <h3>Edit Events</h3>
-    @*<button>Click to add event</button>*@
-    @*<button>Click to delete event</button>*@
-    <div id="EditEventContainer">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken();
-            <div class="form-group">
-                <div class="control-label col-md-3 dd">
-                    Name of Event:
-                </div>
+<link href="../Content/EditCalendarEventCSS.css" rel="stylesheet">
+
+<h3>Edit Events</h3>
+@*<button>Click to add event</button>*@
+@*<button>Click to delete event</button>*@
+<div id="EditEventContainer">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken();
+        <div class="form-group">
+            <div class="control-label col-md-4 dd">
+                Name of Event:
+            </div>
+            <br />
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+            </div>
+        </div>
+        <br /><br /><br />
+        <div class="form-group">
+            <div class="control-label col-md-3">
+                Event type:
+            </div>
+            <br />
+            <div class="col-md-9">
+                @{ var tempModel = new MvcForum.Web.ViewModels.Calendar.CalendarEdit(); }
+                @Html.DropDownListFor(model => model.EventType, tempModel.EventCodeList, new { @class = "eventTypeIn", id = "eventTypeGetter" })
+            </div>
+        </div>
+        <div class="form-group" id="modulePortion">
+            <br /><br />
+            <div class="control-label col-md-3">
+                Module Id:
+            </div>
+            <br />
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Module, new { htmlAttributes = new { @class = "form-control", id = "moduleIn", placeholder = "e.g. IT2253", maxlength = "6", display = "none" } })
+            </div>
+        </div>
+        <br /><br /><br />
+        <div class="form-group">
+            <div class="control-label col-md-3 dd">
+                Date of event:
+            </div>
+            <br />
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+            </div>
+        </div>
+        <br /><br /><br />
+        <div class="form-group">
+            <div class="control-label col-md-4 dd">
+                Time frame of Event:
+            </div>
+            <br /><br />
+            <div class="col-md-9">
+                <p>
+                    From:
+                </p>
+                @Html.EditorFor(model => model.TimeStart, new { htmlAttributes = new { @class = "form-control", type = "time", min = "9.00" } })
                 <br />
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "form-control", type = "text" } })
-                </div>
+
+                <p>
+                    To:
+                </p>
+                @Html.EditorFor(model => model.TimeEnd, new { htmlAttributes = new { @class = "form-control", type = "time", min = "21.30" } })
+            </div>
+        </div>
+        <br /><br /><br /><br /><br /><br /><br /><br />
+        <div class="form-group">
+            <div class="control-label col-md-3 dd">
+                Description:
             </div>
             <br />
             <br />
-            <br />
-            <div class="form-group">
-                <div class="control-label col-md-3">
-                    Event type:
-                </div>
-                <br />
-                <div class="col-md-9">
-                    @*@Html.EditorFor(model => model.EventCode1, @Html.DropDownListFor(mod => mod.EventCode1, Model.EventCodeList))*@
-                    @{ var tempModel = new PrismBoardProject.Models.CalendarEdit(); }
-                    @Html.DropDownListFor(model => model.EventCode1, tempModel.EventCodeList)
+            <div class="col-md-9">
 
-                    @*<select class="form-control" for="EventCode1" id="eventType" name="eventType">
-                        <option value="null"></option>
-                        <option value="EX">Exam</option>
-                        <option value="AS">Assignment</option>
-                        <option value="EV">Other events</option>
-                    </select>*@
-                    @Html.EditorFor(model => model.EventCode2, new { htmlAttributes = new { @class = "form-control", id = "eventCodeIn", placeholder = "Input event code: e.g 0001", maxlength = "4" } })
-                </div>
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", style = "resize: none; height: 200px; width: 400px;" })
             </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <div class="form-group">
-                <div class="control-label col-md-3 dd">
-                    Date of event:
-                </div>
-                <br />
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-                </div>
-            </div>
-            <br />
-            <br />
-            <br />
-            <div class="form-group">
-                <div class="control-label col-md-3 dd">
-                    Time frame of Event:
-                </div>
-                <br />
-                <br />
-                <div class="col-md-9">
-                    <p>
-                        From:
-                    </p>
-                    @Html.EditorFor(model => model.TimeStart, new { htmlAttributes = new { @class = "form-control", type = "time" } })
-                    <br />
-
-                    <p>
-                        To:
-                    </p>
-                    @Html.EditorFor(model => model.TimeEnd, new { htmlAttributes = new { @class = "form-control", type = "time" } })
-                </div>
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <div class="form-group">
-                <div class="control-label col-md-3 dd">
-                    Description:
-                </div>
-                <br />
-                <br />
-                <div class="col-md-9">
-
-                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                </div>
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-
-            <div class="inputbuttons">
+        </div>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <div class="form-group">
+            <div class="inputbuttons col-md-12 ">
                 <button id="addEvent" type="submit" class="btn btn-lg btn-primary addBtn">Add</button>
                 <input class="btn btn-lg btn-success cancelbtn" type="button" id="cancel" value="Cancel" />
             </div>
-        }
-    </div>
-    <script src="../Scripts/EditCalendarEventsJS.js"></script>
-</body>
-</html>
+        </div>
+        <br /><br /><br />
+    }
+</div>
+<script src="../Scripts/EditCalendarEventsJS.js"></script>
