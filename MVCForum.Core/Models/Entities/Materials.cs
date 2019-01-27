@@ -8,10 +8,13 @@
 
     public partial class Materials
     {
+        public Materials()
+        {
+            MatId = GuidComb.GenerateComb();
+        }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int MatId { get; set; }
+
+        public Guid MatId { get; set; }
         public string Name { get; set; }
         public string ModId { get; set; }
         public int Week { get; set; }

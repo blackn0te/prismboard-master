@@ -77,7 +77,7 @@
                         <a class="nav-link" href="@Url.Action("StudentCalendar","Calendar")">Calendar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home")">Modules</a>
+                        <a class="nav-link" href="@Url.Action("Index","Module")">Modules</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index","Home")">Forum</a>
@@ -105,7 +105,7 @@
                     <!--If user is authenticated, show drop down panel-->
                     @if (User.Identity.IsAuthenticated)
                     {
-                        @Html.Action("SideAdminPanel", "Members", new { isDropDown = true })
+                       @Html.Action("SideAdminPanel", "Members", new { isDropDown = true })
                     }
                 </ul>
             </div>

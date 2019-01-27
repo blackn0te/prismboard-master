@@ -1,0 +1,53 @@
+﻿@model MvcForum.Web.ViewModels.Module.ModuleMainViewModel
+
+@{
+    ViewBag.Title = "Modules";
+}
+<head>
+    <style>
+        .table-wrapper-scroll-y {
+            display: block;
+            max-height: 400px;
+            min-height: 300px;
+            overflow-y: auto;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+    </style>
+</head>
+<body>
+    <h2> Your Modules </h2>
+    <div class="table-wrapper-scroll-y">
+        <table class="table table-hover">
+            <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Module Name</th>
+            </tr>
+            @foreach (var s in Model.currentModule)
+            {
+                <tr onclick="location.href='@(Url.Action("SpecificMod", "Module", new { moduleID = s.ModId}))'">
+                    <th scope="row">@s.ModId</th>
+                    <td> @s.ModName</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <br />
+    <br />
+    <h2> Archived Modules </h2>
+    <div class="table-wrapper-scroll-y">
+        <table class="table table-hover">
+            <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Module Name</th>
+            </tr>
+            @foreach (var s in Model.achievedModule)
+            {
+                <tr onclick="location.href='@(Url.Action("SpecificMod", "Module", new { moduleID = s.ModId}))'">
+                    <th scope="row">@s.ModId</th>
+                    <td>@s.ModName</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+

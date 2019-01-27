@@ -5,14 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MvcForum.Core.Utilities;
 
 namespace MvcForum.Core.Models.Entities
 {
     public partial class SubmittedTest
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int SubmitId { get; set; }
+
+        public SubmittedTest()
+        {
+            SubmitId = GuidComb.GenerateComb();
+        }
+
+        public Guid SubmitId { get; set; }
         public int TestDetId { get; set; }
         public int Score { get; set; }
         public string StudId { get; set; }

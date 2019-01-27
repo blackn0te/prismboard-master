@@ -1,0 +1,94 @@
+﻿@model MvcForum.Web.ViewModels.Module.ModuleSpecificViewModel
+
+@{
+    ViewBag.Title = "Viewing Specific Module";
+}
+
+<head>
+    <style>
+        .horizontal-lect {
+            display: block;
+            max-height: 350px;
+            min-height: 350px;
+            overflow-y: auto;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+        .horizontal-anon {
+            display: block;
+            max-height: 300px;
+            min-height: 300px;
+            overflow-y: auto;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+    </style>
+</head>
+<h2>
+    @Model.module.ModName
+</h2>
+<br />
+<div class="container-fluid">
+    <div class="row well">
+        <div class="col-md-7">
+            <div class="row horizontal-anon">
+                <div class="card border-primary mb-3">
+                    <h3 class="card-header">Announcements</h3>
+                    <ul class="list-group list-group-flush"></ul>
+                </div>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary btn-lg btn-block">PrismBoard Omega</button>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card border-primary mb-3 horizontal-lect">
+                <h3 class="card-header">Lecturer Contacts</h3>
+                <ul class="list-group list-group-flush">
+                    @foreach (var s in Model.lectList)
+                    {
+                        <li class="list-group-item flex-column align-items ">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5> @s.LectName</h5>
+                            </div>
+                            <p class="mb-1">Email: @s.LectEmail</p>
+                            <p class="mb-1">Contact: @s.LectNo</p>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h3>Module Materials</h3>
+        <div class="accordion" id="materialMain">
+            @{string header = "header"; string id = "week"; int weekNo = 1;}
+            @foreach (var mat in Model.weekList)
+            {
+                header = header + weekNo;
+                id = id + weekNo;
+                <div class="accordion" id="accorMaterials">
+                    <div class="card">
+                        <div class="card-header" id="@header">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#@id" aria-expanded="false" aria-controls="@id">
+                                    Week @weekNo
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="@id" class="collapse" aria-labelledby="@header" data-parent="#accorMaterials">
+                            <div class="card-body">
+                                <dl>
+                                    @foreach (var indiMat in mat.matlist)
+                                    {
+                                        <dt>@indiMat.Name</dt>
+                                            <dd>@indiMat.MatId</dd>
+                                    }
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                weekNo++;
+            }
+        </div>
+    </div>
+</div>
