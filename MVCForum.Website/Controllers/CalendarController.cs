@@ -34,46 +34,24 @@
 
             using (MvcForumContext db = new MvcForumContext())
             {
-                var query = from c in db.Event
-                            join s in db.StudentEvent 
-                            on c.Id equals s.EventId
-                            where c.Id == s.EventId
-                            select new
-                             {
-                                 c.EventName,
-                                 c.Description,
-                                 c.Date,
-                                 c.TimeStart,
-                                 c.TimeEnd
-                             };
-
-                //add in link between user and the event
+               //add in link between user and the event
                 //db.Students
 
+                //Get one object from Identiy
+                string Username = User.Identity.Name;
+                Student student = db.Students.Where(s => s.Name == Username).First();
+                List<StudentEvent> StudEventList = db.StudentEvent.Where(s => s.AdminNo == student.AdminNo).ToList();
+
+                List<Event> eventList = new List<Event>();
+                foreach(StudentEvent potatoe in StudEventList)
+                {
+                    Event test = db.Event.Where(a => a.Id == potatoe.EventId).First();
+                    eventList.Add(test);
+                }
+
                 List<CalendarModel> eList = new List<CalendarModel>();
-
-                if (query != null)
-                {
-                    foreach (var item in query)
-                    {
-                        CalendarModel addable = new CalendarModel
-                        {
-                            Date = item.Date,
-                            EventName = item.EventName,
-                            EventCode = item.Date,
-                            TimeStart = item.TimeStart,
-                            TimeEnd = item.TimeEnd,
-                            Description = item.Description
-                        };
-                        eList.Add(addable);
-                    }
-                }
-                else
-                {
-                    //query == null
-                }
-                return View(eList);
-
+               
+                return View(eventList);
             }
         }
 

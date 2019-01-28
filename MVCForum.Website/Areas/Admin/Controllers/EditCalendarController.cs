@@ -46,6 +46,8 @@
                             };
                 bool checkVal = false; // checking if module is in the modList
                 //retrieve the list of modules
+                List<StudentEvent> studEv = new List<StudentEvent>();
+                List<string> adminList = new List<string>();
                 List<Module> modList = new List<Module>();
                 if (query != null)
                 {
@@ -63,6 +65,25 @@
                     {
                         if (modVals.ModId == CalendarIn.Module || CalendarIn.Module == null)
                         {
+                            var query2 = from c in db.ModDetails
+                                         where c.ModuleId == modVals.ModId
+                                         select new
+                                        {
+                                            c.PersonName
+                                        };
+                           foreach (var itemVal in query2)
+                            {
+                                var query3 = from v in db.Students
+                                             where v.Name == itemVal.PersonName
+                                             select new
+                                             {
+                                                 v.AdminNo
+                                             };
+                                foreach(var temp in query3)
+                                {
+                                    adminList.Add(temp.AdminNo.ToString());
+                                }
+                            }
                             checkVal = true;
                             break;
                         }
@@ -70,8 +91,7 @@
                     if (checkVal == true)
                     {
                         //add in of events
-
-                        Event calEvent = new Event
+                       Event calEvent = new Event
                         {
                             EventType = CalendarIn.EventType,
                             Date = CalendarIn.Date,
@@ -81,8 +101,8 @@
                             TimeEnd = CalendarIn.TimeEnd,
                             EventName = CalendarIn.EventName
                         };
-
-                        bool checker = true;
+                        
+                       bool checker = true;
                         try
                         {
                             db.Event.Add(calEvent);

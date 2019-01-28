@@ -89,6 +89,7 @@
     <Compile Include="Areas\Admin\Controllers\BannedWordController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModuleManageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RemoveCalendarEventController.cs" />
     <Compile Include="ChatHub.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="ViewModels\Admin\AdminViewModels.cs" />
     <Compile Include="ViewModels\Calendar\CalendarModel.cs" />
     <Compile Include="ViewModels\Calendar\EditCalendarModel.cs" />
+    <Compile Include="ViewModels\Calendar\RemoveCalendarEventModel.cs" />
     <Compile Include="ViewModels\Category\SectionListViewModel.cs" />
     <Compile Include="ViewModels\GenericMessageViewModel.cs" />
     <Compile Include="ViewModels\Admin\LogViewModels.cs" />
@@ -241,6 +243,7 @@
     <Content Include="Areas\Admin\Views\ModuleManage\Error.cshtml" />
     <Content Include="Areas\Admin\Views\ModuleManage\EditModule.cshtml" />
     <Content Include="Areas\Admin\Views\Calendar\RemoveCalendarEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\Calendar\DeleteEvent.cshtml" />
     <None Include="Config\imageprocessor\security.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -1212,6 +1215,7 @@
   <ItemGroup>
     <Folder Include="Application\StorageProviders\" />
     <Folder Include="App_Data\Plugins\" />
+    <Folder Include="Areas\Admin\Views\RemoveCalendarEvent\" />
     <Folder Include="Content\languagepacks\" />
     <Folder Include="Views\EditCalendar\" />
     <Folder Include="Views\Error\" />

@@ -32,8 +32,5 @@ namespace MvcForum.Web.ViewModels.Calendar
         public string Description { get; set; }
         public string EventName { get; set; }
     }
-    public class CalendarEventRmv
-    {
-        
-    }
+    
 }
