@@ -66,7 +66,7 @@ h1 {
     box-shadow: 0 4px 22px 0 rgba(0,0,0,.05);
     margin: 0 auto;
     overflow: hidden;
-    idth: 100%;
+    width: 100%;
 }
 
     #v-cal .vcal-btn {
@@ -197,6 +197,15 @@ h1 {
         cursor: not-allowed;
         opacity: .5;
     }
+/*legend css*/
+.legendStyle {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    height: 10px;
+    width: 10px;
+}
 
 #displayBox {
     height: 100%;
@@ -300,7 +309,7 @@ h1 {
 }
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
-    span.psw {
+    .psw {
         display: block;
         float: none;
     }

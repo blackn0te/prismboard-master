@@ -88,9 +88,7 @@
     <Compile Include="Areas\Admin\Controllers\BannedWordController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModuleManageController.cs" />
-    <Compile Include="ChatHub.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
-    <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\ModerateController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="ExtensionMethods\CategoryViewModelExtensions.cs" />
@@ -117,6 +115,8 @@
     <Compile Include="ViewModels\Admin\AdminLanguageViewModels.cs" />
     <Compile Include="ViewModels\Admin\AdminViewModels.cs" />
     <Compile Include="ViewModels\Calendar\CalendarModel.cs" />
+    <Compile Include="ViewModels\Calendar\EditCalendarModel.cs" />
+    <Compile Include="ViewModels\Calendar\RemoveCalendarEventModel.cs" />
     <Compile Include="ViewModels\Category\SectionListViewModel.cs" />
     <Compile Include="ViewModels\GenericMessageViewModel.cs" />
     <Compile Include="ViewModels\Admin\LogViewModels.cs" />
@@ -240,6 +240,8 @@
     <Content Include="Areas\Admin\Views\ModuleManage\NewModule.cshtml" />
     <Content Include="Areas\Admin\Views\ModuleManage\Error.cshtml" />
     <Content Include="Areas\Admin\Views\ModuleManage\EditModule.cshtml" />
+    <Content Include="Areas\Admin\Views\Calendar\RemoveCalendarEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\Calendar\DeleteEvent.cshtml" />
     <None Include="Config\imageprocessor\security.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -1204,17 +1206,16 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Views\Category\ListSections.cshtml" />
     <None Include="Properties\PublishProfiles\prismboard - Web Deploy.pubxml" />
-    <Content Include="Views\Calendar\EditCalendarEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\Calendar\EditCalendarEvent.cshtml" />
     <Content Include="Views\Calendar\StudentCalendar.cshtml" />
-    <Content Include="Views\Chat\Chat.cshtml" />
-    <Content Include="Views\Module\Index.cshtml" />
-    <Content Include="Views\Module\Error.cshtml" />
-    <Content Include="Views\Module\SpecificMod.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\StorageProviders\" />
     <Folder Include="App_Data\Plugins\" />
+    <Folder Include="Areas\Admin\Views\RemoveCalendarEvent\" />
     <Folder Include="Content\languagepacks\" />
+    <Folder Include="Views\EditCalendar\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVCForum.Core\MvcForum.Core.csproj">
@@ -1414,18 +1415,6 @@
     <PackageReference Include="Microsoft.AspNet.Razor">
       <Version>3.2.3</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNet.SignalR">
-      <Version>2.4.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AspNet.SignalR.Core">
-      <Version>2.2.2</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AspNet.SignalR.JS">
-      <Version>2.2.2</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AspNet.SignalR.SystemWeb">
-      <Version>2.2.2</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.AspNet.Web.Optimization">
       <Version>1.1.3</Version>
     </PackageReference>
@@ -1467,9 +1456,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Owin.Host.SystemWeb">
       <Version>3.1.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Owin.Security">
-      <Version>4.0.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.SqlServer.Compact">
       <Version>4.0.8876.1</Version>

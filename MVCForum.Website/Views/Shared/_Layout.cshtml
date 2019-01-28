@@ -79,7 +79,7 @@
                         <a class="nav-link" href="@Url.Action("Index","Home")">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("StudentCalendar","Calendar")">Calendar</a>
+                        <a class="nav-link" href="../../Calendar/StudentCalendar">Calendar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index","Module")">Modules</a>
@@ -88,7 +88,7 @@
                         <a class="nav-link" href="@Url.Action("Index","Home")">Forum</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home")">Calendar</a>
+                        <a class="nav-link" href="@Url.Action("Chat","Chat")">Chat</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ">
@@ -151,5 +151,6 @@
     {
         @Html.Raw(Html.Settings().CustomFooterCode)
     }
+@RenderSection("scripts", required: false)
     </body>
 </html>
