@@ -18,7 +18,7 @@ namespace MvcForum.Core.Models.Entities
         }
 
         public Guid SubmitId { get; set; }
-        public int TestDetId { get; set; }
+        public Guid TestDetId { get; set; }
         public int Score { get; set; }
         public string StudId { get; set; }
         public int AttemptNum { get; set; }

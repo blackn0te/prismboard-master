@@ -15,7 +15,7 @@
 
 
         public Guid SubmittedId { get; set; }
-        public int SubmitableId { get; set; }
+        public Guid SubmitableId { get; set; }
         public string StudId { get; set; }
         public DateTime SubmittedDate { get; set; }
         public string FileLink { get; set; }

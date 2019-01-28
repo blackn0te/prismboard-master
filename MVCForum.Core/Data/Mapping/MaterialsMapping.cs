@@ -15,6 +15,7 @@
             Property(x => x.IsSubmittable).IsRequired();
             Property(x => x.IsTest).IsRequired();
             Property(x => x.FileLink).IsOptional();
+            Property(x => x.fileName).IsOptional();
 
 
         }

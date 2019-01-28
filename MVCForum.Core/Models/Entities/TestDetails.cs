@@ -14,8 +14,8 @@
         }
 
         public Guid TestDetId { get; set; }
-        public string ModueleId { get; set; }
-        public int MatId { get; set; }
+        public Guid ModueleId { get; set; }
+        public Guid MatId { get; set; }
         public int Marks { get; set; }
         public int Percentage { get; set; }
         public string JsonLink { get; set; }

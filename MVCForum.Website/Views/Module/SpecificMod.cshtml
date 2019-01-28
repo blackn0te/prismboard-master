@@ -57,38 +57,47 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <h3>Module Materials</h3>
-        <div class="accordion" id="materialMain">
-            @{string header = "header"; string id = "week"; int weekNo = 1;}
-            @foreach (var mat in Model.weekList)
-            {
-                header = header + weekNo;
-                id = id + weekNo;
-                <div class="accordion" id="accorMaterials">
-                    <div class="card">
-                        <div class="card-header" id="@header">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#@id" aria-expanded="false" aria-controls="@id">
-                                    Week @weekNo
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="@id" class="collapse" aria-labelledby="@header" data-parent="#accorMaterials">
-                            <div class="card-body">
-                                <dl>
-                                    @foreach (var indiMat in mat.matlist)
-                                    {
-                                        <dt>@indiMat.Name</dt>
-                                            <dd>@indiMat.MatId</dd>
+    <h3>Module Materials</h3>
+    <div class="accordion" id="accorMaterials">
+        @{string header = "header"; string id = "week"; int weekNo = 1;}
+        @foreach (var mat in Model.weekList)
+        {
+            header = header + weekNo;
+            id = id + weekNo;
+            <div class="card">
+                <div class="card-header" id="@header">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#@id" aria-expanded="false" aria-controls="@id">
+                            Week @weekNo
+                        </button>
+                    </h2>
+                </div>
+                <div id="@id" class="collapse" aria-labelledby="@header" data-parent="#accorMaterials">
+                    <div class="card-body">
+                        <dl>
+                            @foreach (var indiMat in mat.matlist)
+                            {
+                                <dt>@indiMat.Name</dt>
+                                <dd>
+                                    <a>
+                                        @indiMat.fileName
+                                    </a>
+                                   @if(indiMat.IsSubmittable){
+                                    <span>
+                                         <button type="button" class="btn btn-danger">
+                                             Submission Required
+                                         </button>
+                                    </span>
                                     }
-                                </dl>
-                            </div>
-                        </div>
+                                </dd>
+                            }
+                        </dl>
                     </div>
                 </div>
-                weekNo++;
-            }
-        </div>
+            </div>
+            <br />
+        weekNo++;
+        }
     </div>
+    <br />
 </div>

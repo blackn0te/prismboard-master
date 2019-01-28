@@ -18,7 +18,7 @@ namespace MvcForum.Core.Models.Entities
 
 
         public Guid SubmittableId { get; set; }
-        public int MatId { get; set; }
+        public Guid MatId { get; set; }
         public DateTime SubDate { get; set; }
         public string Note { get; set; }
 

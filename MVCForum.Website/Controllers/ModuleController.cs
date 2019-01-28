@@ -117,13 +117,14 @@ namespace MvcForum.Web.Controllers
                             }
                         }
 
-                            Module module = db.Module.Where(s => s.ModId == moduleID).First();
+                        view.weekList.Add(weekCheck);
+                        Module module = db.Module.Where(s => s.ModId == moduleID).First();
 
                             
-                            view.lectList = lectList;
-                            view.module = module;
+                        view.lectList = lectList;
+                        view.module = module;
 
-                            return View(view);
+                        return View(view);
                         }
                         else
                         {
@@ -147,6 +148,27 @@ namespace MvcForum.Web.Controllers
                 }
             
             
+        }
+
+        public ActionResult FileDownload(string matID)
+        {
+            MvcForumContext db = new MvcForumContext();
+
+            if (matID != null)
+            {
+                if (db.Materials.Any(s => s.MatId.ToString() == matID))
+                {
+
+                }
+                else {
+                    return RedirectToAction("Error");
+                }
+            }
+            else {
+                return RedirectToAction("Error");
+            }
+
+            return View();
         }
 
 
