@@ -45,6 +45,7 @@
                                 c.ModEnd
                             };
                 bool checkVal = false; // checking if module is in the modList
+                bool checkNull  = true;
                 //retrieve the list of modules
                 List<StudentEvent> studEv = new List<StudentEvent>();
                 List<string> adminList = new List<string>();
@@ -63,7 +64,7 @@
                     }
                     foreach (var modVals in modList)
                     {
-                        if (modVals.ModId == CalendarIn.Module || CalendarIn.Module == null)
+                        if (modVals.ModId == CalendarIn.Module )
                         {
                             var query2 = from c in db.ModDetails
                                          where c.ModuleId == modVals.ModId
@@ -87,6 +88,12 @@
                             checkVal = true;
                             break;
                         }
+                        else if(CalendarIn.Module == null)
+                        {
+                            //not module related
+                            checkVal = true;
+                            checkNull = false;
+                        }
                     }
                     if (checkVal == true)
                     {
@@ -107,6 +114,18 @@
                         {
                             db.Event.Add(calEvent);
                             db.SaveChanges();
+                            if(checkNull == true)
+                            {
+                                Event test = db.Event.Where(a => a.EventName == CalendarIn.EventName).First();
+                                foreach (var adminNoVal in adminList)
+                                {
+                                    StudentEvent studEvent = new StudentEvent
+                                    {
+                                        AdminNo = adminNoVal,
+                                        EventId = test.Id
+                                    };
+                                }
+                            }
                         }
                         catch (Exception e)
                         {
