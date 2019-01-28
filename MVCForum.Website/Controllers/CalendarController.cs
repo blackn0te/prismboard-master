@@ -49,22 +49,12 @@
                         Event test = db.Event.Where(a => a.Id == potatoe.EventId).First();
                         eventList.Add(test);
                     }
-
-                    List<CalendarModel> eList = new List<CalendarModel>();
-
                     return View(eventList);
                 }
                 catch
-                List<Event> eventList = new List<Event>();
-                foreach (StudentEvent potatoe in StudEventList)
-
                 {
                     return View();
                 }
-
-                List<CalendarModel> eList = new List<CalendarModel>();
-
-                return View(eventList);
             }
         }
 
