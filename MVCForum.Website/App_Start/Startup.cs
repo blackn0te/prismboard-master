@@ -27,6 +27,7 @@ namespace MvcForum.Web
     {
         public void Configuration(IAppBuilder app)
         {
+
         //    app.MapSignalR();
 
             AreaRegistration.RegisterAllAreas();

@@ -69,55 +69,62 @@
     //query == null posibly teacher
     //display all events
 
-    var currentName = (@User.Identity.Name);
     var events = (@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model)));
-    for (var r = 0; r < events.length; r++) {
-        
+    if (events != null) {
+        //alert("Events loaded:  " + displayString);
+        window.addEventListener('load', function () {
+            vanillaCalendar.init({
+                disablePastDays: true
+            });
+
+            for (var position = 0; position < events.length; position++) {
+                findDate(events[position]);
+            }
+
+            //Retrieve the list from C# controller
+            //Instead of using data from session, take data from list
+            //Insert the events through a for loop, like findDate()
+            //Display
+
+            document.getElementsByClassName("vcal-btn")[0].onclick = function () {
+                if (this.usedDate != []) {
+                    this.usedDate = [];
+                }
+                for (var position = 0; position < events.length; position++) {
+                    findDate(events[position]);
+                }
+            }
+            document.getElementsByClassName("vcal-btn")[1].onclick = function () {
+                if (this.usedDate != []) {
+                    this.usedDate = [];
+                }
+                for (var position = 0; position < events.length; position++) {
+                    findDate(events[position]);
+                }
+            }
+        })
     }
+    else {
+        window.addEventListener('load', function () {
+            vanillaCalendar.init({
+                disablePastDays: true
+            });
+        });
+    }
+   
                             //showing of the values
-                        console.log("running");
-                        var displayString = "Very unique: ";
-                        for (var x = 0; x < events.length; x++) {
-                            displayString += events[x].EventName + " ";
-                            if (x != events.length) {
-                                displayString += ",";
-                            }
-                        }
+                        //console.log("running");
+                        //var displayString = "Very unique: ";
+                        //for (var x = 0; x < events.length; x++) {
+                        //    displayString += events[x].EventName + " ";
+                        //    if (x != events.length) {
+                        //        displayString += ",";
+                        //    }
+                        //}
 
-                        console.log("running " +displayString);
+                        //console.log("running " +displayString);
 
-                        //alert("Events loaded:  " + displayString);
-                        window.addEventListener('load', function () {
-                            vanillaCalendar.init({
-                            disablePastDays: true
-                            });
-
-                            for (var position = 0; position < events.length; position++) {
-                                findDate(events[position]);
-                            }
-
-                            //Retrieve the list from C# controller
-                            //Instead of using data from session, take data from list
-                            //Insert the events through a for loop, like findDate()
-                            //Display
-
-                            document.getElementsByClassName("vcal-btn")[0].onclick = function () {
-                                if (this.usedDate != []) {
-                                    this.usedDate = [];
-                                }
-                                for (var position = 0; position < events.length; position++) {
-                                    findDate(events[position]);
-                                }
-                            }
-                            document.getElementsByClassName("vcal-btn")[1].onclick = function () {
-                                if (this.usedDate != []) {
-                                    this.usedDate = [];
-                                }
-                                for (var position = 0; position < events.length; position++) {
-                                    findDate(events[position]);
-                                }
-                            }
-                        })
+                        
 //eventCount() function
 function eventCount(dayComp) {
                 if (this.usedDate.length == 0) {

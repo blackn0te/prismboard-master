@@ -25,7 +25,7 @@
         var n = document.createElement("div"),
             s = document.createElement("span");
 
-        s.innerHTML = t, n.className = "vcal-date", n.setAttribute("data-calendar-date", this.date), 1 === t && (n.style.marginLeft = 0 === e ? 6 * 14.28 + "%" : 14.28 * (e - 1) + "%"), this.options.disablePastDays && this.date.getTime() <= this.todaysDate.getTime() - 1 ? n.classList.add("vcal-date--disabled") : (n.classList.add("vcal-date--active"), n.setAttribute("data-calendar-status", "active")), this.date.toString() === this.todaysDate.toString() && n.classList.add("vcal-date--today"), n.appendChild(s), this.month.appendChild(n)
+        s.innerHTML = t, n.className = "vcal-date", n.setAttribute("data-calendar-date", this.date), 1 === t && (n.style.marginLeft = 0 === e ? 6 * 14.28 + "%" : 14.28 * (e - 1) + "%"), this.options.disablePastDays && this.date.getTime() <= this.todaysDate.getTime() - 1 ? n.classList.add("vcal-date--disabled") : (n.classList.add("vcal-date--active"), n.setAttribute("data-calendar-status", "active")), this.date.toString() === this.todaysDate.toString() && n.classList.add("vcal-date--today"), n.appendChild(s), this.month.appendChild(n);
     },
     dateClicked: function () {
         var t = this;
@@ -35,8 +35,8 @@
             var dateRecieved = this.dataset.calendarDate;
 
             dateRecieved = dateRecieved.toString().split(" ");
-            //alert("Day of the week: " + dateRecieved[0] + "\nMonth: " + dateRecieved[1] + "\nDay: " + dateRecieved[2] + "\nYear: " + dateRecieved[3]);// var popup = document.getElementById("popid");
-
+            alert("Day of the week: " + dateRecieved[0] + "\nMonth: " + dateRecieved[1] + "\nDay: " + dateRecieved[2] + "\nYear: " + dateRecieved[3]);// var popup = document.getElementById("popid");
+            //alert("running "+dateRecieved[0]);
             document.getElementById("displayBox").style.display = "block";
 
             // var display = document.querySelector(".container");
@@ -250,7 +250,7 @@ function findDate(eventIn) {
                         dayOfEvent[dayNum - 1].setAttribute("name", keep);
                     }
                     else {
-                        dayOfEvent[dayNum - 1].setAttribute("name", " "+name + ",");
+                        dayOfEvent[dayNum - 1].setAttribute("name", " " + name + ",");
                     }
                 }
                 else {
@@ -267,7 +267,7 @@ function findDate(eventIn) {
                     dayOfEvent[dayNum - 1].setAttribute("name", keep);
                 }
                 else {
-                    dayOfEvent[dayNum - 1].setAttribute("name", " " +name + ",");
+                    dayOfEvent[dayNum - 1].setAttribute("name", " " + name + ",");
                 }
             }
             else {
@@ -279,7 +279,7 @@ function findDate(eventIn) {
                     dayOfEvent[dayNum - 1].setAttribute("name", keep);
                 }
                 else {
-                    dayOfEvent[dayNum - 1].setAttribute("name", " " +name + ",");
+                    dayOfEvent[dayNum - 1].setAttribute("name", " " + name + ",");
                 }
             }
         }
