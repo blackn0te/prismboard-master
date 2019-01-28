@@ -16,6 +16,8 @@ namespace MvcForum.Web.Controllers
 
         public ActionResult Chat()
         {
+            //from here, get the user details then pass to view 
+            string name = User.Identity.Name;// only takes 
             return View();
         }
     }
