@@ -8,17 +8,22 @@
 
     public partial class Materials
     {
+        public Materials()
+        {
+            MatId = GuidComb.GenerateComb();
+        }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int MatId { get; set; }
+
+        public Guid MatId { get; set; }
         public string Name { get; set; }
+        public string fileName { get; set; }
         public string ModId { get; set; }
         public int Week { get; set; }
         public string Type { get; set; }
         public Boolean IsSubmittable { get; set; }
         public Boolean IsTest { get; set; }
         public string FileLink { get; set; }
+
 
     }
 }

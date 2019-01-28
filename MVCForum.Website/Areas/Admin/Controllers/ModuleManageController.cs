@@ -108,7 +108,7 @@
                     }
 
                     db.SaveChanges();
-                    var redirectUrl = new UrlHelper(Request.RequestContext).Action("Module", "ModuleManager");
+                    var redirectUrl = new UrlHelper(Request.RequestContext).Action("Module", "ModuleManage");
                     return Json(new { Url = redirectUrl });
                 }
                 else
