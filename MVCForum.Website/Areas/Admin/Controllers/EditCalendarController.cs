@@ -1,4 +1,4 @@
-﻿namespace MvcForum.Web.Controllers
+﻿namespace MvcForum.Web.Areas.Admin.Controllers
 {
     using MvcForum.Web.ViewModels.Calendar;
     using System;
@@ -10,18 +10,18 @@
     using Core.Models.Entities;
     using MvcForum.Core.Data.Context;
     using Module = Core.Models.Entities.Module;
+    using MvcForum.Web.Areas.Admin.Controllers;
+    using MvcForum.Core.Constants;
 
-    public class EditCalendarController : BaseController
+    [Authorize(Roles = Constants.AdminRoleName)]
+    public class EditCalendarController : BaseAdminController
     {
-        public EditCalendarController(ILoggingService loggingService, IMembershipService membershipService,
-            ILocalizationService localizationService, IRoleService roleService, ISettingsService settingsService,
-            IPostService postService, IUploadedFileService uploadedFileService, ICacheService cacheService,
-            IMvcForumContext context)
-            : base(loggingService, membershipService, localizationService, roleService,
-                settingsService, cacheService, context)
+        public EditCalendarController(ILoggingService loggingService, IMembershipService membershipService, 
+            ILocalizationService localizationService, ISettingsService settingsService, IMvcForumContext context)
+            : base(loggingService, membershipService, localizationService, settingsService, context)
         {
-
         }
+
 
         //GET: Calendar/EditCalendarEvent
         public ActionResult EditCalendarEvent()

@@ -22,8 +22,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44394</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -88,7 +87,9 @@
     <Compile Include="Areas\Admin\Controllers\BatchController.cs" />
     <Compile Include="Areas\Admin\Controllers\BannedWordController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EditCalendarController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModuleManageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RemoveCalendarEventController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\ModerateController.cs" />
@@ -245,6 +246,8 @@
     <Content Include="Areas\Admin\Views\ModuleManage\EditModule.cshtml" />
     <Content Include="Areas\Admin\Views\Calendar\RemoveCalendarEvent.cshtml" />
     <Content Include="Areas\Admin\Views\Calendar\DeleteEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\EditCalendar\EditCalendarEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\RemoveCalendarEvent\RemoveCalendarEvent.cshtml" />
     <None Include="Config\imageprocessor\security.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -1222,7 +1225,6 @@
   <ItemGroup>
     <Folder Include="Application\StorageProviders\" />
     <Folder Include="App_Data\Plugins\" />
-    <Folder Include="Areas\Admin\Views\RemoveCalendarEvent\" />
     <Folder Include="Content\languagepacks\" />
     <Folder Include="Views\EditCalendar\" />
     <Folder Include="Views\Error\" />

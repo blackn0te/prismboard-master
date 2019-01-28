@@ -1,16 +1,29 @@
-﻿using MvcForum.Core.Data.Context;
-using MvcForum.Core.Models.Entities;
-using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace MvcForum.Web.Areas.Admin.Controllers
+﻿namespace MvcForum.Web.Areas.Admin.Controllers
 {
-    public class RemoveCalendarEventController : Controller
+    using MvcForum.Core.Constants;
+    using MvcForum.Core.Data.Context;
+    using MvcForum.Core.Interfaces;
+    using MvcForum.Core.Interfaces.Services;
+    using MvcForum.Core.Models.Entities;
+    using System;
+    using System.Collections.Generic;
+    using System.Dynamic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+
+    [Authorize(Roles = Constants.AdminRoleName)]
+    public class RemoveCalendarEventController : BaseAdminController
     {
+        public RemoveCalendarEventController(ILoggingService loggingService, 
+            IMembershipService membershipService, ILocalizationService localizationService, 
+            ISettingsService settingsService, IMvcForumContext context) 
+            : base(loggingService, membershipService, localizationService, settingsService, context)
+        {
+        }
+
+
+
         // GET: Admin/RemoveCalendarEvent
         public ActionResult RemoveCalendarEvent()
         {

@@ -79,7 +79,7 @@
             </a>
             <ul id="permissions" class="collapse">
                 <li>
-                    <a class="auto-managePermissions" href="@Url.Action("Index", "Permissions", new { area = "Admin" }, null)" class="@(currentController == "permissions" && currentAction == "index" ? "active" : "")">Manage Permissions</a>
+                    <a class="auto-managePermissions @(currentController == "permissions" && currentAction == "index" ? "active" : "")" href="@Url.Action("Index", "Permissions", new { area = "Admin" }, null)">Manage Permissions</a>
                 </li>
                 <li>
                     <a href="@Url.Action("PermissionTypes", "Permissions", new { area = "Admin" }, null)" class="@(currentController == "permissions" && currentAction == "permissiontypes" ? "active" : "")">Add/Remove Permission Types</a>
@@ -94,10 +94,10 @@
             </a>
             <ul id="calendar" class="collapse">
                 <li>
-                    <a href="@Url.Action("EditCalendarEvent", "Calendar", new { area = "Admin" }, null)" class="@(currentController == "editcalendar" && currentAction == "editcalendarevent" ? "active" : "")">Add Events</a>
+                    <a href="@Url.Action("EditCalendarEvent", "EditCalendar", new { area = "Admin" }, null)" class="@(currentController == "editcalendar" && currentAction == "editcalendarevent" ? "active" : "")">Add Events</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("RemoveCalendarEvent", "Calendar", new { area = "Admin" }, null)" class="@(currentController == "editcalendar" && currentAction == "removecalendarevent" ? "active" : "")">Remove Events</a>
+                    <a href="@Url.Action("RemoveCalendarEvent", "RemoveCalendarEvent", new { area = "Admin" }, null)" class="@(currentController == "removecalendarevent" && currentAction == "removecalendarevent" ? "active" : "")">Remove Events</a>
                 </li>
             </ul>
         </li>
