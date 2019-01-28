@@ -79,7 +79,7 @@
                             {
                                 <dt>@indiMat.Name</dt>
                                 <dd>
-                                    <a>
+                                    <a href="@Url.Action("FileDownload", "Module", new { matID = indiMat.MatId.ToString()})">
                                         @indiMat.fileName
                                     </a>
                                    @if(indiMat.IsSubmittable){

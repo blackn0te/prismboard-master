@@ -150,6 +150,7 @@ namespace MvcForum.Web.Controllers
             
         }
 
+        [Authorize]
         public ActionResult FileDownload(string matID)
         {
             MvcForumContext db = new MvcForumContext();
@@ -158,7 +159,11 @@ namespace MvcForum.Web.Controllers
             {
                 if (db.Materials.Any(s => s.MatId.ToString() == matID))
                 {
+                    Materials material = db.Materials.Where(s => s.MatId.ToString() == matID).First();
 
+                    byte[] fileBytes = System.IO.File.ReadAllBytes(material.FileLink);
+                    string fileName = material.fileName;
+                    return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
                 }
                 else {
                     return RedirectToAction("Error");
@@ -168,7 +173,7 @@ namespace MvcForum.Web.Controllers
                 return RedirectToAction("Error");
             }
 
-            return View();
+            
         }
 
 
