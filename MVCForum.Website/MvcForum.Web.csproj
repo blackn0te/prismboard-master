@@ -90,6 +90,7 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModuleManageController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\ModerateController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="ExtensionMethods\CategoryViewModelExtensions.cs" />
