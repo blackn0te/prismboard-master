@@ -83,6 +83,12 @@
                "{controller}/{action}/{id}", // URL with parameters
                new { controller = "Calendar", action = "StudentCalendar", id = UrlParameter.Optional } // Parameter defaults
            );
+
+            routes.MapRoute(
+                "Module",
+                "{controller}/{action}/{id}",
+                new { controller = "Module", action = "SpecificMod"}    
+            );
         }
     }
 }

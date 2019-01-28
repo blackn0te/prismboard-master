@@ -90,6 +90,7 @@
     <Compile Include="Areas\Admin\Controllers\ModuleManageController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ModerateController.cs" />
+    <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="ExtensionMethods\CategoryViewModelExtensions.cs" />
     <Compile Include="ViewModels\Admin\AdminBadgeViewModels.cs" />
     <Compile Include="ViewModels\Admin\AjaxAdminViewModels.cs" />
@@ -169,6 +170,8 @@
     <Compile Include="ViewModels\Member\ActiveMembersViewModel.cs" />
     <Compile Include="ViewModels\Member\ListLatestMembersViewModel.cs" />
     <Compile Include="ViewModels\Moderate\ModerateViewModel.cs" />
+    <Compile Include="ViewModels\Module\ModuleMainViewModel.cs" />
+    <Compile Include="ViewModels\Module\ModuleSpecificViewModel.cs" />
     <Compile Include="ViewModels\Module\SY_ModuleViewModel.cs" />
     <Compile Include="ViewModels\Poll\PollViewModel.cs" />
     <Compile Include="ViewModels\Poll\UpdatePollViewModel.cs" />
@@ -1199,6 +1202,9 @@
     <None Include="Properties\PublishProfiles\prismboard - Web Deploy.pubxml" />
     <Content Include="Views\Calendar\EditCalendarEvent.cshtml" />
     <Content Include="Views\Calendar\StudentCalendar.cshtml" />
+    <Content Include="Views\Module\Index.cshtml" />
+    <Content Include="Views\Module\Error.cshtml" />
+    <Content Include="Views\Module\SpecificMod.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\StorageProviders\" />
