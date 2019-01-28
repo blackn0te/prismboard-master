@@ -35,7 +35,7 @@
             var dateRecieved = this.dataset.calendarDate;
 
             dateRecieved = dateRecieved.toString().split(" ");
-            alert("Day of the week: " + dateRecieved[0] + "\nMonth: " + dateRecieved[1] + "\nDay: " + dateRecieved[2] + "\nYear: " + dateRecieved[3]);// var popup = document.getElementById("popid");
+            //alert("Day of the week: " + dateRecieved[0] + "\nMonth: " + dateRecieved[1] + "\nDay: " + dateRecieved[2] + "\nYear: " + dateRecieved[3]);// var popup = document.getElementById("popid");
             //alert("running "+dateRecieved[0]);
             document.getElementById("displayBox").style.display = "block";
 
@@ -218,8 +218,8 @@ function findDate(eventIn) {
             //this year and same month as page
             console.log("Same month");
 
+           
             var diff = 0;
-
             var dayNum = parseInt(dateDivided[2]);
             var dayOfEvent = document.querySelectorAll(".vcal-date");
             console.log(typeof dayNum + " day " + dayNum);
@@ -238,40 +238,53 @@ function findDate(eventIn) {
                 thisday = parseInt(lastD) - thisday;
                 diff = dayNum + thisday;
             }
-            console.log("Day of event " + dayNum + " and day today " + thisday + " difference is " + diff);
-
-            if (diff <= 4) {
-                //red	
-                if (diff >= 0) {
-                    dayOfEvent[dayNum - 1].style.backgroundColor = "red";
-                    if (checkRepeats(date)) {
-                        var keep = dayOfEvent[dayNum - 1].getAttribute("name");
-                        keep += name + ",";
-                        dayOfEvent[dayNum - 1].setAttribute("name", keep);
-                    }
-                    else {
-                        dayOfEvent[dayNum - 1].setAttribute("name", " " + name + ",");
-                    }
-                }
-                else {
-                    //date over 
-                    dayOfEvent[dayNum - 1].style.color = "black";
-                }
+            console.log("Day of event " + dayNum + " and day today " + thisday);
+            if (diff < 0) {
+                //date over 
+                dayOfEvent[dayNum - 1].style.color = "black";
             }
-            else if (diff <= 9) {
-                //orange
-                dayOfEvent[dayNum - 1].style.backgroundColor = "orange";
+            else if (eventIn.EventType == "EX") {
+                //red: Examination
+                
+                dayOfEvent[dayNum - 1].style.backgroundColor = "red";
                 if (checkRepeats(date)) {
                     var keep = dayOfEvent[dayNum - 1].getAttribute("name");
-                    keep += name + ", ";
+                    keep += name + ",";
                     dayOfEvent[dayNum - 1].setAttribute("name", keep);
                 }
                 else {
                     dayOfEvent[dayNum - 1].setAttribute("name", " " + name + ",");
                 }
             }
-            else {
-                //green
+            else if (eventIn.EventType == "AS") {
+                //orange: Assignment
+
+                dayOfEvent[dayNum - 1].style.backgroundColor = "orange";
+                if (checkRepeats(date)) {
+                    var keep = dayOfEvent[dayNum - 1].getAttribute("name");
+                    keep += name + ",";
+                    dayOfEvent[dayNum - 1].setAttribute("name", keep);
+                }
+                else {
+                    dayOfEvent[dayNum - 1].setAttribute("name", " " + name + ",");
+                }
+            }
+            else if (eventIn.EventType == "CT") {
+                //purple: Common Test
+
+                dayOfEvent[dayNum - 1].style.backgroundColor = "purple";
+                if (checkRepeats(date)) {
+                    var keep = dayOfEvent[dayNum - 1].getAttribute("name");
+                    keep += name + ",";
+                    dayOfEvent[dayNum - 1].setAttribute("name", keep);
+                }
+                else {
+                    dayOfEvent[dayNum - 1].setAttribute("name", " " + name + ",");
+                }
+            }
+            else if (eventIn.EventType == "OT") {
+                //green: Others 
+
                 dayOfEvent[dayNum - 1].style.backgroundColor = "green";
                 if (checkRepeats(date)) {
                     var keep = dayOfEvent[dayNum - 1].getAttribute("name");
@@ -334,10 +347,10 @@ function eventCount(dayComp) {
             var countDay = dayComp.split("-", 1);
             var vcal = document.querySelectorAll(".vcal-date");
             console.log(countDay);
-
+            alert("running here"+countDay);
             var check = vcal[parseInt(countDay) - 1].getAttribute("name");
             var divideNum = parseInt(this.usedDate[i].split("")[10]);
-            console.log(check + " " + divideNum);
+            console.log(check + " " + divideNum+ " nullfinder");
 
             if (check != null) {
                 var divisibleNum = "";
@@ -380,7 +393,7 @@ function eventCount(dayComp) {
 
                 if (dayComp === hold) {
                     console.log("val true");
-                    var keystring = des.split(" ")[0] + " " + des.split(" ")[1];
+                    var keystring = des.split(",")[0];
                     console.log("val check: " + keystring);
                     var describe = "You have no events going on today!";
 
@@ -391,6 +404,20 @@ function eventCount(dayComp) {
                         if (keystring == nameToCompare) {
                             //same string name, can proceed
                             describe = descStored;
+                            if (eventObj.EventType != null) {
+                                if (eventObj.EventType == "OT") {
+                                    describe += "\n Type: Miscellaneous";
+                                }
+                                else if (eventObj.EventType == "EX") {
+                                    describe += "\n Type: Examination";
+                                }
+                                else if (eventObj.EventType == "CT") {
+                                    describe += "\n Type: Common Test";
+                                }
+                                else if (eventObj.EventType == "Assignment") {
+                                    describe += "\n Type: Assignment";
+                                }
+                            }
                         }
                         else {
                             //not the same string, break out of loop
@@ -443,34 +470,3 @@ function eventCount(dayComp) {
         }
     }
 }
-
-
-function writeCookie(Event, EventID, Date, Time) {
-    //Date in the format of DDMMYYYY
-    //Time in the format of 24hours clock HHMM
-    var date, expires;
-    var day = 3;
-    //alert("initiated");
-    if (day) {
-        //alert("EventID " + EventID + " Date " + Date + " Time " + Time);
-        // date = new Date();
-        // date.setTime(date.getTime()+(days*24*60*60*1000));
-        // expires = "; expires=" + date.toGMTString();
-        var storeInfo = { "EventID": EventID, "Date": Date, "Time": Time };
-
-        localStorage[Event] = JSON.stringify(storeInfo);
-    }
-
-    else {
-        expires = "";
-    }
-
-    alert("cookies added");
-    document.cookie = Event + "=" + EventID + ", " + Date + ", " + Time + " " + expire + "; path=/";
-}
-
-
-
-
-
-

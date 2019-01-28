@@ -22,10 +22,11 @@
 
 //var outString = sourceString.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
 setInputFilter(document.getElementById("moduleIn"), function (value) {
-    //return /^a-zA-Z0-9\//.test(value); // filters any non /- alphanumeric
-    return /^\w*\d*\.?\d*$/.test(value); //filters anything but numbers
-    //return /[^\w\s]$/.test(value);
+    return /^\w*\d*\.?\d*$/.test(value); //filters anything but numbers (whitelisting)
+});
 
+setInputFilter(document.getElementById("eventNameGetter"), function (value) {
+    return /^\w*\d*\.?\d*$/.test(value); //filters anything but numbers (whitelisting)
 });
 //function validateAddress() {
 //    var TCode = document.getElementById('moduleIn').value;

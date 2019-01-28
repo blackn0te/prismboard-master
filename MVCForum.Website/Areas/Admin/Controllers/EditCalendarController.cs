@@ -35,144 +35,179 @@
         [ValidateAntiForgeryToken]
         public ActionResult EditCalendarEvent(CalendarEdit CalendarIn)
         {
-            //add events
-            using (MvcForumContext db = new MvcForumContext())
+            var timeSt = CalendarIn.TimeStart.ToString().Split(':')[0];
+            int x = Int32.Parse(timeSt); 
+            var timeEn = CalendarIn.TimeEnd.ToString().Split(':')[0];
+            int y = Int32.Parse(timeEn);
+
+            if (y > x)
             {
-                var query = from c in db.Module
-                            select new
-                            {
-                                c.ModId,
-                                c.ModName,
-                                c.ModEnd
-                            };
-                bool checkVal = false; // checking if module is in the modList
-                bool checkNull = true;
-                //retrieve the list of modules
-                List<StudentEvent> studEv = new List<StudentEvent>();
-                List<string> adminList = new List<string>();
-                List<Module> modList = new List<Module>();
-                if (query != null)
+                //the event is not valid
+                return RedirectToAction("Shared", "Error");
+            }
+            else {
+                //event time is verified valid
+                //add events
+                using (MvcForumContext db = new MvcForumContext())
                 {
-                    //add values into modList
-                    foreach (var item in query)
-                    {
-                        Module addable = new Module
-                        {
-                            ModId = item.ModId,
-                            ModName = item.ModName,
-                            ModEnd = item.ModEnd
-                        };
-                        modList.Add(addable);
-                    }
-                    //take all modlist items and compare to module
-                    foreach (var modVals in modList)
-                    {
-                        if (modVals.ModId == CalendarIn.Module)
-                        {
-                            checkVal = true;
-                            List<ModDetail> moduleList =  db.ModDetails.Where(m => m.ModuleId == modVals.ModId).ToList();
-                            List<Student> StudList = new List<Student>();
-                            foreach(var MLI in moduleList)
-                            {
-                                try
+                    var query = from c in db.Module
+                                select new
                                 {
-                                    Student testStud = db.Students.Where(s => s.Name == MLI.PersonName).First();
-                                    StudList.Add(testStud);
-                                }
-                                catch
-                                {
-                                    //not the person
-                                }
-                            }
-                            foreach(var SLI in StudList)
+                                    c.ModId,
+                                    c.ModName,
+                                    c.ModEnd
+                                };
+                    bool checkVal = false; // checking if module is in the modList
+                    bool checkNull = true;
+                    //retrieve the list of modules
+                    List<StudentEvent> studEv = new List<StudentEvent>();
+                    List<string> adminList = new List<string>();
+                    List<string> lectIdList = new List<string>();
+                    List<Module> modList = new List<Module>();
+                    if (query != null)
+                    {
+                        //add values into modList
+                        foreach (var item in query)
+                        {
+                            Module addable = new Module
                             {
-                                adminList.Add(SLI.AdminNo);
-                            }
-
-                            break;
+                                ModId = item.ModId,
+                                ModName = item.ModName,
+                                ModEnd = item.ModEnd
+                            };
+                            modList.Add(addable);
                         }
-                        else if (CalendarIn.Module == null)
+                        //take all modlist items and compare to module
+                        foreach (var modVals in modList)
                         {
-                            //not module related
-                            checkVal = true;
-                            checkNull = false;
-                        }
-                    }
-                    if (checkVal == true)
-                    {
-                        //add in of events
-                        Event calEvent = new Event
-                        {
-                            EventType = CalendarIn.EventType,
-                            Date = CalendarIn.Date,
-                            Module = CalendarIn.Module,
-                            Description = CalendarIn.Description,
-                            TimeStart = CalendarIn.TimeStart,
-                            TimeEnd = CalendarIn.TimeEnd,
-                            EventName = CalendarIn.EventName
-                        };
-
-                        bool checker = true;
-                        db.Event.Add(calEvent);
-                        db.SaveChanges();
-                        try
-                        {
-                           if (checkNull == true)
+                            if (modVals.ModId == CalendarIn.Module)
                             {
-                                
-                                Event test = db.Event.Where(a => a.EventName.ToString() == CalendarIn.EventName.ToString()).First();//errors
-
-                                foreach (var adminNoVal in adminList)
+                                checkVal = true;
+                                List<ModDetail> moduleList = db.ModDetails.Where(m => m.ModuleId == modVals.ModId).ToList();
+                                List<Student> StudList = new List<Student>();
+                                List<Lecturer> LectList = new List<Lecturer>();
+                                foreach (var MLI in moduleList)
                                 {
-                                    var strin = test.Id.ToString();
-                                    StudentEvent studEvent = new StudentEvent
+                                    try
                                     {
-                                        AdminNo = adminNoVal,
-                                        Id = strin
-                                    };
-                                    db.StudentEvent.Add(studEvent);
-                                    db.SaveChanges();
+                                        Student testStud = db.Students.Where(s => s.Name == MLI.PersonName).First();
+                                        StudList.Add(testStud);
+                                    }
+                                    catch
+                                    {
+                                        //not the person
+                                    }
+                                    try
+                                    {
+                                        Lecturer testLect = db.Lecturers.Where(s => s.LectName == MLI.PersonName).First();
+                                        LectList.Add(testLect);
+                                    }
+                                    catch
+                                    {
+                                        //not the person
+                                    }
                                 }
+                                foreach (var SLI in StudList)
+                                {
+                                    adminList.Add(SLI.AdminNo);
+                                }
+                                foreach (var LLI in LectList)
+                                {
+                                    lectIdList.Add(LLI.LecturerId.ToString());
+                                }
+                                break;
+                            }
+                            else if (CalendarIn.Module == null)
+                            {
+                                //not module related
+                                checkVal = true;
+                                checkNull = false;
                             }
                         }
-                        catch (Exception e)
+                        if (checkVal == true)
                         {
-                            checker = false;
-                            Console.WriteLine(e);
-                        }
+                            //add in of events
+                            Event calEvent = new Event
+                            {
+                                EventType = CalendarIn.EventType,
+                                Date = CalendarIn.Date,
+                                Module = CalendarIn.Module,
+                                Description = CalendarIn.Description,
+                                TimeStart = CalendarIn.TimeStart,
+                                TimeEnd = CalendarIn.TimeEnd,
+                                EventName = CalendarIn.EventName
+                            };
 
-                        if (checker == true)
-                        {
-                            //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                            return RedirectToAction("AddEventSucces", "EditCalendar");
-                            //return RedirectToAction("StudentCalendar", "Calendar");
+                            bool checker = true;
+                            db.Event.Add(calEvent);
+                            db.SaveChanges();
+                            try
+                            {
+                                if (checkNull == true)
+                                {
+
+                                    Event test = db.Event.Where(a => a.EventName.ToString() == CalendarIn.EventName.ToString()).First();
+                                    //add students
+                                    foreach (var adminNoVal in adminList)
+                                    {
+                                        var strin = test.Id.ToString();
+                                        StudentEvent studEvent = new StudentEvent
+                                        {
+                                            AdminNo = adminNoVal,
+                                            Id = strin
+                                        };
+                                        db.StudentEvent.Add(studEvent);
+                                        db.SaveChanges();
+                                    }
+                                    //add lecturers
+                                    foreach (var lectIdVal in lectIdList)
+                                    {
+                                        var strin = test.Id.ToString();
+                                        StudentEvent studEvent = new StudentEvent
+                                        {
+                                            AdminNo = lectIdVal,
+                                            Id = strin
+                                        };
+                                        db.StudentEvent.Add(studEvent);
+                                        db.SaveChanges();
+                                    }
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                checker = false;
+                                Console.WriteLine(e);
+                            }
+
+                            if (checker == true)
+                            {
+                                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                                return RedirectToAction("AddEventSucces", "EditCalendar");
+                                //return RedirectToAction("StudentCalendar", "Calendar");
+                            }
+                            else
+                            {
+                                //error should be here
+                                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                                return RedirectToAction("Shared", "Error");
+                            }
                         }
                         else
                         {
-                            //error should be here
-                            //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                            //module list do not match with input
                             return RedirectToAction("Shared", "Error");
+                            //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                         }
                     }
-                    else
-                    {
-                        //module list do not match with input
-                        return RedirectToAction("Shared", "Error");
-                        //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                    }
-                }
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                return RedirectToAction("Shared", "Error");
+                    //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    return RedirectToAction("Shared", "Error");
 
+                }
             }
 
+            
+            
 
-            //return RedirectToAction("EditCalendarEvent", "Calendar");
-
-            //manual mapping
-
-            //cs.Open();
-            //cs.Close();
         }
 
         public ActionResult AddEventSuccess()
