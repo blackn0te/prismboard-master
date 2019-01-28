@@ -34,7 +34,7 @@
 
             using (MvcForumContext db = new MvcForumContext())
             {
-               //add in link between user and the event
+                //add in link between user and the event
                 //db.Students
 
                 //Get one object from Identiy
@@ -43,14 +43,14 @@
                 List<StudentEvent> StudEventList = db.StudentEvent.Where(s => s.AdminNo == student.AdminNo).ToList();
 
                 List<Event> eventList = new List<Event>();
-                foreach(StudentEvent potatoe in StudEventList)
+                foreach (StudentEvent potatoe in StudEventList)
                 {
                     Event test = db.Event.Where(a => a.Id == potatoe.EventId).First();
                     eventList.Add(test);
                 }
 
                 List<CalendarModel> eList = new List<CalendarModel>();
-               
+
                 return View(eventList);
             }
         }
@@ -146,23 +146,5 @@
 
             }
 
-            
-
-            if (checker)
-            {
-                return RedirectToAction("StudentCalendar", "Calendar");
-            }
-            else
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            
-            //return RedirectToAction("EditCalendarEvent", "Calendar");
-
-            //manual mapping
-
-            //cs.Open();
-            //cs.Close();
         }
     }
-}
