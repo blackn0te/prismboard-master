@@ -22,7 +22,8 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <IISExpressSSLPort>44330</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -90,6 +91,7 @@
     <Compile Include="Areas\Admin\Controllers\ModuleManageController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ModerateController.cs" />
+    <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="ExtensionMethods\CategoryViewModelExtensions.cs" />
     <Compile Include="ViewModels\Admin\AdminBadgeViewModels.cs" />
     <Compile Include="ViewModels\Admin\AjaxAdminViewModels.cs" />
@@ -171,6 +173,9 @@
     <Compile Include="ViewModels\Member\ActiveMembersViewModel.cs" />
     <Compile Include="ViewModels\Member\ListLatestMembersViewModel.cs" />
     <Compile Include="ViewModels\Moderate\ModerateViewModel.cs" />
+    <Compile Include="ViewModels\Module\EditModuleViewModel.cs" />
+    <Compile Include="ViewModels\Module\ModuleMainViewModel.cs" />
+    <Compile Include="ViewModels\Module\ModuleSpecificViewModel.cs" />
     <Compile Include="ViewModels\Module\SY_ModuleViewModel.cs" />
     <Compile Include="ViewModels\Poll\PollViewModel.cs" />
     <Compile Include="ViewModels\Poll\UpdatePollViewModel.cs" />
@@ -1206,6 +1211,12 @@
     <Content Include="Areas\Admin\Views\Calendar\EditCalendarEvent.cshtml" />
     <Content Include="Views\Calendar\StudentCalendar.cshtml" />
     <Content Include="Views\Chat\Chat.cshtml" />
+    <Content Include="Views\Error.cshtml" />
+    <Content Include="Views\Index.cshtml" />
+    <Content Include="Views\SpecificMod.cshtml" />
+    <Content Include="Views\Module\Error.cshtml" />
+    <Content Include="Views\Module\Index.cshtml" />
+    <Content Include="Views\Module\SpecificMod.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\StorageProviders\" />

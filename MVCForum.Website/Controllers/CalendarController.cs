@@ -145,24 +145,6 @@
                 return RedirectToAction("Shared", "Error");
 
             }
-
-            
-
-            if (checker)
-            {
-                return RedirectToAction("StudentCalendar", "Calendar");
-            }
-            else
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            
-            //return RedirectToAction("EditCalendarEvent", "Calendar");
-
-            //manual mapping
-
-            //cs.Open();
-            //cs.Close();
         }
     }
 }
