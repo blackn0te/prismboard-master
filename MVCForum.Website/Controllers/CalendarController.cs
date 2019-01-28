@@ -40,16 +40,30 @@
                 {
                     //Get one object from Identiy
                     string Username = User.Identity.Name;
-                    Student student = db.Students.Where(s => s.Name == Username).First();
-                    List<StudentEvent> StudEventList = db.StudentEvent.Where(s => s.AdminNo == student.AdminNo).ToList();
+                    Student student = db.Students.Where(s => s.Name.ToString() == Username.ToString()).First();
+                    List<StudentEvent> StudEventList = db.StudentEvent.Where(s => s.AdminNo.ToString() == student.AdminNo.ToString()).ToList();
 
                     List<Event> eventList = new List<Event>();
                     foreach (StudentEvent potatoe in StudEventList)
                     {
-                        Event test = db.Event.Where(a => a.Id == potatoe.EventId).First();
+                        Event test = db.Event.Where(a => a.Id.ToString() == potatoe.Id.ToString()).First();
                         eventList.Add(test);
                     }
-                    return View(eventList);
+                    List<CalendarModel> calModel = new List<CalendarModel>();
+                    foreach (Event tomatoe in eventList)
+                    {
+                        CalendarModel cm = new CalendarModel();
+                        cm.EventName = tomatoe.EventName;
+                        cm.EventType = tomatoe.EventType;
+                        cm.Description = tomatoe.Description;
+                        cm.Module = tomatoe.Module;
+                        cm.Date = tomatoe.Date;
+                        cm.TimeStart = tomatoe.TimeStart;
+                        cm.TimeEnd = tomatoe.TimeEnd;
+                        calModel.Add(cm);
+                    }
+                    
+                    return View(calModel);
                 }
                 catch
                 {
@@ -58,97 +72,97 @@
             }
         }
 
-        //GET: Calendar/EditCalendarEvent
-        public ActionResult EditCalendarEvent()
-        {
-            return View();
-        }
+        ////GET: Calendar/EditCalendarEvent
+        //public ActionResult EditCalendarEvent()
+        //{
+        //    return View();
+        //}
 
-        //POST: AddEvents
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditCalendarEvent(CalendarEdit CalendarIn)
-        {
-            //add events
-            using (MvcForumContext db = new MvcForumContext())
-            {
-                var query = from c in db.Module
-                            select new
-                            {
-                                c.ModId,
-                                c.ModName,
-                                c.ModEnd
-                            };
-                bool checkVal = false; // checking if module is in the modList
-                //retrieve the list of modules
-                List<Module> modList = new List<Module>();
-                if (query != null)
-                {
-                    foreach (var item in query)
-                    {
-                        Module addable = new Module
-                        {
-                            ModId = item.ModId,
-                            ModName = item.ModName,
-                            ModEnd = item.ModEnd
-                        };
-                        modList.Add(addable);
-                    }
-                    foreach (var modVals in modList)
-                    {
-                        if (modVals.ModId == CalendarIn.Module || CalendarIn.Module == null)
-                        {
-                            checkVal = true;
-                            break;
-                        }
-                    }
-                    if (checkVal == true)
-                    {
-                        //add in of events
+        ////POST: AddEvents
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult EditCalendarEvent(CalendarEdit CalendarIn)
+        //{
+        //    //add events
+        //    using (MvcForumContext db = new MvcForumContext())
+        //    {
+        //        var query = from c in db.Module
+        //                    select new
+        //                    {
+        //                        c.ModId,
+        //                        c.ModName,
+        //                        c.ModEnd
+        //                    };
+        //        bool checkVal = false; // checking if module is in the modList
+        //        //retrieve the list of modules
+        //        List<Module> modList = new List<Module>();
+        //        if (query != null)
+        //        {
+        //            foreach (var item in query)
+        //            {
+        //                Module addable = new Module
+        //                {
+        //                    ModId = item.ModId,
+        //                    ModName = item.ModName,
+        //                    ModEnd = item.ModEnd
+        //                };
+        //                modList.Add(addable);
+        //            }
+        //            foreach (var modVals in modList)
+        //            {
+        //                if (modVals.ModId == CalendarIn.Module || CalendarIn.Module == null)
+        //                {
+        //                    checkVal = true;
+        //                    break;
+        //                }
+        //            }
+        //            if (checkVal == true)
+        //            {
+        //                //add in of events
 
-                        Event calEvent = new Event
-                        {
-                            EventType = CalendarIn.EventType,
-                            Date = CalendarIn.Date,
-                            Module = CalendarIn.Module,
-                            Description = CalendarIn.Description,
-                            TimeStart = CalendarIn.TimeStart,
-                            TimeEnd = CalendarIn.TimeEnd,
-                            EventName = CalendarIn.EventName
-                        };
+        //                Event calEvent = new Event
+        //                {
+        //                    EventType = CalendarIn.EventType,
+        //                    Date = CalendarIn.Date,
+        //                    Module = CalendarIn.Module,
+        //                    Description = CalendarIn.Description,
+        //                    TimeStart = CalendarIn.TimeStart,
+        //                    TimeEnd = CalendarIn.TimeEnd,
+        //                    EventName = CalendarIn.EventName
+        //                };
 
-                        bool checker = true;
-                        try
-                        {
-                            db.Event.Add(calEvent);
-                            db.SaveChanges();
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e);
-                            checker = false;
-                        }
+        //                bool checker = true;
+        //                try
+        //                {
+        //                    db.Event.Add(calEvent);
+        //                    db.SaveChanges();
+        //                }
+        //                catch (Exception e)
+        //                {
+        //                    Console.WriteLine(e);
+        //                    checker = false;
+        //                }
 
-                        if (checker)
-                        {
-                            return RedirectToAction("StudentCalendar", "Calendar");
-                        }
-                        else
-                        {
-                            //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                            return RedirectToAction("Shared", "Error");
-                        }
-                    }
-                    else
-                    {
-                        //module list do not match with input
-                        return RedirectToAction("Shared", "Error");
-                    }
-                }
-                return RedirectToAction("Shared", "Error");
+        //                if (checker)
+        //                {
+        //                    return RedirectToAction("StudentCalendar", "Calendar");
+        //                }
+        //                else
+        //                {
+        //                    //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //                    return RedirectToAction("Shared", "Error");
+        //                }
+        //            }
+        //            else
+        //            {
+        //                //module list do not match with input
+        //                return RedirectToAction("Shared", "Error");
+        //            }
+        //        }
+        //        return RedirectToAction("Shared", "Error");
 
-            }
+        //    }
 
-        }
+        //}
     }
 }

@@ -159,11 +159,11 @@ function closeModal() {
 var eventObj;
 function findDate(eventIn) {
     this.eventObj = eventIn;
-    console.log("eventIn " + eventIn);
-    //var eventTry = localStorage[eventIn];
     var name = eventIn.EventName;
-    //eventTry = JSON.parse(eventTry);
     var date = eventIn.Date;
+
+    console.log("name " + name + " date " + date);   
+
     var dateDivided = date.split("-");
     console.log("date: " + date + "\n date divided: " + dateDivided);
 

@@ -8,7 +8,7 @@ namespace MvcForum.Web.ViewModels.Calendar
 {
     public class CalendarModel
     {
-        public string EventCode { get; set; }
+        public string EventType { get; set; }
         public string EventName { get; set; }
         public string Date { get; set; }
         public string Module { get; set; }

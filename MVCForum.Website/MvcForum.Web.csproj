@@ -22,7 +22,8 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <IISExpressSSLPort>44394</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -248,6 +249,7 @@
     <Content Include="Areas\Admin\Views\Calendar\DeleteEvent.cshtml" />
     <Content Include="Areas\Admin\Views\EditCalendar\EditCalendarEvent.cshtml" />
     <Content Include="Areas\Admin\Views\RemoveCalendarEvent\RemoveCalendarEvent.cshtml" />
+    <Content Include="Areas\Admin\Views\EditCalendar\AddEventSuccess.cshtml" />
     <None Include="Config\imageprocessor\security.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
