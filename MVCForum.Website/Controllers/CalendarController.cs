@@ -36,17 +36,30 @@
             {
                 //add in link between user and the event
                 //db.Students
+                try
+                {
+                    //Get one object from Identiy
+                    string Username = User.Identity.Name;
+                    Student student = db.Students.Where(s => s.Name == Username).First();
+                    List<StudentEvent> StudEventList = db.StudentEvent.Where(s => s.AdminNo == student.AdminNo).ToList();
 
-                //Get one object from Identiy
-                string Username = User.Identity.Name;
-                Student student = db.Students.Where(s => s.Name == Username).First();
-                List<StudentEvent> StudEventList = db.StudentEvent.Where(s => s.AdminNo == student.AdminNo).ToList();
+                    List<Event> eventList = new List<Event>();
+                    foreach (StudentEvent potatoe in StudEventList)
+                    {
+                        Event test = db.Event.Where(a => a.Id == potatoe.EventId).First();
+                        eventList.Add(test);
+                    }
 
+                    List<CalendarModel> eList = new List<CalendarModel>();
+
+                    return View(eventList);
+                }
+                catch
                 List<Event> eventList = new List<Event>();
                 foreach (StudentEvent potatoe in StudEventList)
+
                 {
-                    Event test = db.Event.Where(a => a.Id == potatoe.EventId).First();
-                    eventList.Add(test);
+                    return View();
                 }
 
                 List<CalendarModel> eList = new List<CalendarModel>();
@@ -148,5 +161,4 @@
 
         }
     }
-
 }
