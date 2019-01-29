@@ -43,7 +43,7 @@
             if (y > x)
             {
                 //the event is not valid
-                return RedirectToAction("Shared", "Error");
+                return RedirectToAction("Error");
             }
             else {
                 //event time is verified valid
@@ -182,25 +182,25 @@
                             if (checker == true)
                             {
                                 //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                                return RedirectToAction("AddEventSucces", "EditCalendar");
+                                return RedirectToAction("AddEventSucces");
                                 //return RedirectToAction("StudentCalendar", "Calendar");
                             }
                             else
                             {
                                 //error should be here
                                 //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                                return RedirectToAction("Shared", "Error");
+                                return RedirectToAction("Error");
                             }
                         }
                         else
                         {
                             //module list do not match with input
-                            return RedirectToAction("Shared", "Error");
+                            return RedirectToAction("Error");
                             //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                         }
                     }
                     //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                    return RedirectToAction("Shared", "Error");
+                    return RedirectToAction( "Error");
 
                 }
             }
@@ -214,7 +214,10 @@
         {
             return View();
         }
-
+        public ActionResult Error()
+        {
+            return View();
+        }
         //GET: Calendar/EditCalendarEvent
         public ActionResult RemoveCalendarEvent()
         {

@@ -252,6 +252,7 @@
     <Content Include="Areas\Admin\Views\EditCalendar\EditCalendarEvent.cshtml" />
     <Content Include="Areas\Admin\Views\RemoveCalendarEvent\RemoveCalendarEvent.cshtml" />
     <Content Include="Areas\Admin\Views\EditCalendar\AddEventSuccess.cshtml" />
+    <Content Include="Areas\Admin\Views\EditCalendar\Error.cshtml" />
     <None Include="Config\imageprocessor\security.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
