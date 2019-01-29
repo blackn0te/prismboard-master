@@ -251,7 +251,6 @@
     <Content Include="Areas\Admin\Views\Calendar\DeleteEvent.cshtml" />
     <Content Include="Areas\Admin\Views\EditCalendar\EditCalendarEvent.cshtml" />
     <Content Include="Areas\Admin\Views\RemoveCalendarEvent\RemoveCalendarEvent.cshtml" />
-    <Content Include="Areas\Admin\Views\EditCalendar\AddEventSuccess.cshtml" />
     <None Include="Config\imageprocessor\security.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -1231,6 +1230,7 @@
   <ItemGroup>
     <Folder Include="Application\StorageProviders\" />
     <Folder Include="App_Data\Plugins\" />
+    <Folder Include="App_Data\uploads\" />
     <Folder Include="Content\languagepacks\" />
     <Folder Include="Views\EditCalendar\" />
     <Folder Include="Views\Error\" />
