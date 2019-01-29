@@ -1,0 +1,16 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<h2>
+    Hey, sorry we couldn’t fetch the page you were looking for! :(
+</h2>
+<button id="backToHome"></button>
+
+<script>
+    document.getElementById("backToHome").onclick = function () {
+        windows.location("../Home/Index");
+    }
+</script>
