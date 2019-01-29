@@ -84,7 +84,7 @@
                                     </a>
                                    @if(indiMat.IsSubmittable){
                                     <span>
-                                         <button type="button" class="btn btn-danger">
+                                         <button onclick="location.href='@(Url.Action("SubmitDialog", "Module", new { matID = indiMat.MatId.ToString()}))'" type="button" class="btn btn-danger">
                                              Submission Required
                                          </button>
                                     </span>

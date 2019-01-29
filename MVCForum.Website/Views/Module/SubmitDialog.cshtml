@@ -1,0 +1,38 @@
+﻿@model MvcForum.Web.ViewModels.Module.ModuleSubmittedContentsViewModel
+
+@{
+    ViewBag.Title = "Submissions";
+}
+
+<h2>
+    Submissions for @Model.mat.Name
+    <span style="vertical-align: central" class="float-right">
+        <button type="button" class="btn btn-success btn-lg" onclick="location.href='@(Url.Action("SubmitFile", "Module", new { submittableId = Model.file.SubmittableId.ToString()}))'">
+            Add New Submission
+        </button>
+    </span>
+</h2>
+
+<table class="table table-dark">
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Submission Attempt</th>
+        <th scope="col">Actions</th>
+    </tr>
+    @{ string prefix = "Week ";}
+    @{ int index = 1;}
+    @{ prefix = prefix + index;}
+    @foreach (var s in Model.submitedList)
+    {
+        <tr>
+            <th scope="row">@s.SubmittedId.ToString()</th>
+            <td>@prefix</td>
+            <td><button class="btn btn-success">View Details</button></td>
+        </tr>
+
+        index++;
+        prefix = prefix + index;
+    }
+</table>
+
+

@@ -1,0 +1,25 @@
+﻿@model MvcForum.Web.ViewModels.Module.SubmitFileViewModel
+
+@{
+    ViewBag.Title = "Submit File";
+}
+
+<h2>
+    Submission for 
+    @Model.Mat.Name
+</h2>
+<div class="alert alert-danger">
+    <h4 class="alert-heading">Take Note!</h4>
+    <p class="mb-0">@Model.File.Note</p>
+</div>
+@using (Html.BeginForm("SubmitFile", "Module", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label for="inputFile">File Input</label>
+        <input type="file" class="form-control-file" id="inputFile" />
+        <br />
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+}
