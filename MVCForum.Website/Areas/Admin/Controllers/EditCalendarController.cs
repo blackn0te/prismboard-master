@@ -121,10 +121,10 @@
                             {
                                 
                                 Event test = db.Event.Where(a => a.EventName.ToString() == CalendarIn.EventName.ToString()).First();//errors
+                                var strin = test.Id.ToString();
 
                                 foreach (var adminNoVal in adminList)
                                 {
-                                    var strin = test.Id.ToString();
                                     StudentEvent studEvent = new StudentEvent
                                     {
                                         AdminNo = adminNoVal,
@@ -144,25 +144,25 @@
                         if (checker == true)
                         {
                             //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                            return RedirectToAction("AddEventSucces", "EditCalendar");
+                            return RedirectToAction("AddEventSucces");
                             //return RedirectToAction("StudentCalendar", "Calendar");
                         }
                         else
                         {
                             //error should be here
                             //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                            return RedirectToAction("Shared", "Error");
+                            return RedirectToAction("Error");
                         }
                     }
                     else
                     {
                         //module list do not match with input
-                        return RedirectToAction("Shared", "Error");
+                        return RedirectToAction("Error");
                         //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                     }
                 }
                 //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                return RedirectToAction("Shared", "Error");
+                return RedirectToAction( "Error");
 
             }
 
@@ -258,16 +258,16 @@
                         else
                         {
                             //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                            return RedirectToAction("Shared", "Error");
+                            return RedirectToAction( "Error");
                         }
                     }
                     else
                     {
                         //module list do not match with input
-                        return RedirectToAction("Shared", "Error");
+                        return RedirectToAction("Error");
                     }
                 }
-                return RedirectToAction("Shared", "Error");
+                return RedirectToAction("Error");
 
             }
 
